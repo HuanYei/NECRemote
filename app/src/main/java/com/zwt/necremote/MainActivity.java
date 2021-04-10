@@ -88,9 +88,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btn_vol_up = (Button)findViewById(R.id.btn_VOL_up);
         Button btn_vol_down = (Button)findViewById(R.id.btn_VOL_down);
 
-//        Button btn_submit = (Button)findViewById(R.id.btn_send);
-//        Button btn_receive = (Button)findViewById(R.id.btn_receive);
-
         btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,48 +154,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_VOL_dowm);
             }
         });
-//        btn_submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String customerId = et_customer.getText().toString();
-//                String[] numberArray = customerId.split("\n");
-//                String a;
-//                int length;
-//                for (int i=0;i<numberArray.length;i++){
-//                     a=numberArray[i];
-//                    length=a.length();
-//                    numberArray[i]=a.substring(2,length);
-//                    Log.e("numberArray",a);
-//                }
-//                String IRCODE[]=new String[numberArray.length];
-//                String IRKEY[]=new String[numberArray.length];
-//                for (int i=0;i<numberArray.length;i++){
-//
-//                    String ping[]=numberArray[i].split(",");
-//                    IRCODE[i]=ping[0].substring(2,ping[0].length());
-//                    IRKEY[i]=ping[1];
-//                    Log.e("IRKEY",IRKEY[i]);
-//                }
-//                Intent intent=new Intent(MainActivity.this,MainActivity2.class);
-//                intent.putExtra("IRCODE",IRCODE);
-//                intent.putExtra("IRKEY",IRKEY);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//        btn_receive.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                StringBuilder b = new StringBuilder();
-//                ConsumerIrManager.CarrierFrequencyRange[] freqs = consumerIrManagerApi.getCarrierFrequencies();
-//                b.append("IR Carrier Frequencies:\n");// 红外载波频率
-//                for (ConsumerIrManager.CarrierFrequencyRange range : freqs) {
-//                    b.append(String.format("%d - %d\n", range.getMinFrequency(), range.getMaxFrequency()));
-//                }
-//                tv_freqs.setText(b.toString());// 显示结果
-//            }
-//        });
-
     }
     public boolean isHexNumber(String s){
         String regex="^[A-Fa-f0-9]+$";

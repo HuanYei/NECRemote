@@ -263,6 +263,7 @@
     </RelativeLayout>
     <ListView
         android:id="@+id/IR_customlistView"
+        android:layout_gravity="center"
         android:layout_width="match_parent"
         android:background="@color/purple_500"
         android:textStyle="bold"

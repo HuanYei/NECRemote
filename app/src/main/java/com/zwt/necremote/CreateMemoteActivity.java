@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
 
+import com.zwt.necremote.db.DButil;
+
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
@@ -17,16 +19,19 @@ import java.util.Map;
 public class CreateMemoteActivity extends AppCompatActivity implements View.OnClickListener {
     private static Map<String, String> nemote = new HashMap<>();
     private Button create,empty;
-public static Map<String, String> getNemoteMap(){
+    public static Map<String, String> getNemoteMap(){
     return nemote;
 }
-private EditText et_customer;
+    private EditText et_customer,IRnameEditText;
+    DButil dButil=new DButil(this);
+    private String IRname="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_memote);
         create=findViewById(R.id.create);
         empty=findViewById(R.id.empty);
+        IRnameEditText=findViewById(R.id.IRname);
         et_customer=findViewById(R.id.et_customerId);
         create.setOnClickListener(this::onClick);
         empty.setOnClickListener(this::onClick);
@@ -48,6 +53,7 @@ private EditText et_customer;
                 }
                 String IRCODE[]=new String[numberArray.length];
                 String IRKEY[]=new String[numberArray.length];
+                IRname=IRnameEditText.getText().toString();
                 for (int i=0;i<numberArray.length;i++){
 
                     String ping[]=numberArray[i].split(",");
@@ -55,6 +61,8 @@ private EditText et_customer;
                     IRKEY[i]=ping[1];
                     nemote.put(ping[1], ping[0].substring(2,ping[0].length()));
                     Log.e("IRKEY",IRKEY[i]);
+                    dButil.insertIR(IRname,ping[1],ping[0].substring(2,ping[0].length()));
+                    Log.e("SSSSSS", "onClick: " );
                 }
                 Intent intent=new Intent(CreateMemoteActivity.this,MainActivity2.class);
                 intent.putExtra("IRCODE",IRCODE);

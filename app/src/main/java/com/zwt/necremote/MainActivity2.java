@@ -38,7 +38,12 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         Intent intent=getIntent();
         String[] IRCODE=intent.getStringArrayExtra("IRCODE");
         String[] IRKEY=intent.getStringArrayExtra("IRKEY");
-
+        boolean IRAlljudge=intent.getBooleanExtra("IRALL",false);
+        if (IRAlljudge){
+            nemote = IRallActivity.getNemoteMap();
+        }else {
+            nemote = CreateMemoteActivity.getNemoteMap();
+        }
         initButton();
         ArrayAdapter adapter=new ArrayAdapter<String>(this,R.layout.ac_item,IRKEY);
         listView.setAdapter(adapter);
@@ -73,8 +78,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         Button btn_vol_up = (Button)findViewById(R.id.btn_VOL_up);
         Button btn_vol_down = (Button)findViewById(R.id.btn_VOL_down);
 
-//        Map<String, String> nemote = CreateMemoteActivity.getNemoteMap();
-        nemote = CreateMemoteActivity.getNemoteMap();
+
                        mRegionView = (RoundMenuView) findViewById(R.id.my_roundMenuView);
         mRegionView.setListener(new RoundMenuView.RegionViewClickListener() {
 

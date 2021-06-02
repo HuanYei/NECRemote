@@ -69,7 +69,7 @@ public class DButil {
     public Cursor selectIR(String IRNAME){
         DatabaseHelper mySQLiteOpenHelper=DatabaseHelper.getInstance(context);
         SQLiteDatabase db = mySQLiteOpenHelper.getWritableDatabase();
-        String sql="SELECT * FROM NECIR WHERE IRNAME="+IRNAME;
+        String sql="SELECT * FROM NECIR WHERE IRNAME='"+IRNAME+"'";
         Cursor cursor=db.rawQuery(sql,null);
         int IRallnumber=0;
         if (cursor!=null&&cursor.moveToFirst()){

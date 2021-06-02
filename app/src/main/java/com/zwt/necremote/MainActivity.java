@@ -211,40 +211,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.key_0:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xa956df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("a956df20"));
                 break;
             case R.id.key_1:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xbd42df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("bd42df20"));
                 break;
             case R.id.key_2:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xbc43df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("bc43df20"));
                 break;
             case R.id.key_3:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xf00fdf20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("f00fdf20"));
                 break;
             case R.id.key_4:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xe11edf20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("e11edf20"));
                 break;
             case R.id.key_5:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xe21ddf20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("e21ddf20"));
                 break;
             case R.id.key_6:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xe31cdf20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("e31cdf20"));
                 break;
             case R.id.key_7:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xe718df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("e718df20"));
                 break;
             case R.id.key_8:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xba45df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("ba45df20"));
                 break;
             case R.id.key_9:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xb34cdf20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("b34cdf20"));
                 break;
             case R.id.key_11:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xf609df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("f609df20"));
                 break;
             case R.id.key_10:
-                consumerIrManagerApi.transmit(38000, IRlevel("0xfe01df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("fe01df20"));
                 break;
         }
     }

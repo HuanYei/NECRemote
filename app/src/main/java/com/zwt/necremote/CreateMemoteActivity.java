@@ -22,9 +22,10 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
     public static Map<String, String> getNemoteMap(){
     return nemote;
 }
-    private EditText et_customer,IRnameEditText;
+    private EditText et_customer,IRnameEditText,IRHeaderCode;
     DButil dButil=new DButil(this);
     private String IRname="";
+    private boolean RTKIRjudge;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,12 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
         empty=findViewById(R.id.empty);
         IRnameEditText=findViewById(R.id.IRname);
         et_customer=findViewById(R.id.et_customerId);
+        IRHeaderCode=findViewById(R.id.IRHeaderCode);
+        RTKIRjudge=getIntent().getStringExtra("IRType").equals("RTK");
+        if (!RTKIRjudge){
+            IRHeaderCode.setVisibility(View.VISIBLE);
+            et_customer.setHint(R.string.MTK_item_keycode);
+        }
         create.setOnClickListener(this::onClick);
         empty.setOnClickListener(this::onClick);
     }
@@ -42,15 +49,24 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
         switch (v.getId()){
             case R.id.create:
                 String customerId = et_customer.getText().toString();
+                customerId=customerId.replace(" ","");
                 String[] numberArray = customerId.split("\n");
                 String a;
                 int length;
-                for (int i=0;i<numberArray.length;i++){
-                    a=numberArray[i];
-                    length=a.length();
-                    numberArray[i]=a.substring(2,length);
-                    Log.e("numberArray",a);
+                if (RTKIRjudge){
+                    for (int i=0;i<numberArray.length;i++){
+                        a=numberArray[i];
+                        length=a.length();
+                        numberArray[i]=a.substring(2,length);
+                        Log.e("numberArray",a);
+                    }
+                }else {
+                    for (int i=0;i<numberArray.length;i++){
+                        numberArray[i]=toRKTCODE(numberArray[i]);
+                        Log.e("numberArray",numberArray[i]);
+                    }
                 }
+
                 String IRCODE[]=new String[numberArray.length];
                 String IRKEY[]=new String[numberArray.length];
                 IRname=IRnameEditText.getText().toString();
@@ -75,5 +91,26 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
                 et_customer.setText("");
                 break;
         }
+    }
+    public  String toRKTCODE(String IRCODEKEY){
+        String ping[]=IRCODEKEY.split("=");
+        String code=ping[1].replace("0x","");
+        code=codeFF(code);
+        code="0x"+code;
+        String Headcode="0x20df";
+        Headcode=Headcode.replace("0x","");
+        System.out.println(Headcode);
+        String a=Headcode.substring(0,2);
+        String b=Headcode.substring(2,4);
+        code=code+b+a;
+        IRCODEKEY=code+","+ping[0];
+        return IRCODEKEY;
+    }
+
+    private  String codeFF(String code) {
+        System.out.println(code);
+        Integer a=Integer.parseInt(code,16);
+        Integer c=255-a;
+        return Integer.toHexString(c)+code;
     }
 }

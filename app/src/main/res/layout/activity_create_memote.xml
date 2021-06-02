@@ -13,10 +13,19 @@
         android:hint="遥控器名字"
         android:layout_height="0dp"/>
     <EditText
+        android:visibility="gone"
+        android:id="@+id/IRHeaderCode"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:hint="客户码：例：0x20DF"
+        android:layout_height="0dp"/>
+
+    <EditText
+        android:gravity="top"
         android:id="@+id/et_customerId"
         android:layout_weight="18"
         android:layout_width="match_parent"
-        android:hint="1,0xf40bdf20,KEY_POWER"
+        android:hint="1,0xf40bdf20,KEY_POWER\n1,0xeb14df20,KEY_MUTE"
         android:layout_height="0dp"/>
     <Button
         android:id="@+id/create"

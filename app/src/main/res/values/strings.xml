@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NECRemote</string>
+    <string name="MTK_item_keycode">KEY_POWER=0x0B\nKEY_0=0x56</string>
 </resources>

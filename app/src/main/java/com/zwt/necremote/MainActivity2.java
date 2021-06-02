@@ -230,57 +230,88 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.key_0:
+                if (nemote.containsKey("KEY_0"))
+                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_0")));
+                else
+                    consumerIrManagerApi.transmit(38000, IRlevel("a956df20"));
+                break;
+            case R.id.key_1:
+                if (nemote.containsKey("KEY_1"))
+                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_1")));
+                else
+                    consumerIrManagerApi.transmit(38000, IRlevel("bd42df20"));
+                break;
+            case R.id.key_2:
+                if (nemote.containsKey("KEY_2"))
+                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_2")));
+                else
+                    consumerIrManagerApi.transmit(38000, IRlevel("bc43df20"));
+                break;
+            case R.id.key_3:
+                if (nemote.containsKey("key_3"))
+                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("key_3")));
+                else
+                    consumerIrManagerApi.transmit(38000, IRlevel("f00fdf20"));
+                break;
+            case R.id.key_4:
+                if (nemote.containsKey("KEY_4"))
+                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_4")));
+                else
+                    consumerIrManagerApi.transmit(38000, IRlevel("e11edf20"));
+                break;
+            case R.id.key_5:
                 if (nemote.containsKey("KEY_5"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_5")));
                 else
-                consumerIrManagerApi.transmit(38000, IRlevel("0xe21ddf20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("e21ddf20"));
                 break;
             case R.id.key_6:
                 if (nemote.containsKey("KEY_6"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_6")));
                 else
-                    consumerIrManagerApi.transmit(38000, IRlevel("0xe31cdf20"));
+                    consumerIrManagerApi.transmit(38000, IRlevel("e31cdf20"));
                 break;
             case R.id.key_7:
                 if (nemote.containsKey("KEY_7"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_7")));
                 else
-                consumerIrManagerApi.transmit(38000, IRlevel("0xe718df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("e718df20"));
                 break;
             case R.id.key_8:
                 if (nemote.containsKey("KEY_8"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_8")));
                 else
-                consumerIrManagerApi.transmit(38000, IRlevel("0xba45df20"));
+                consumerIrManagerApi.transmit(38000, IRlevel("ba45df20"));
                 break;
             case R.id.key_9:
                 if (nemote.containsKey("KEY_9"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_9")));
                 else
-                    consumerIrManagerApi.transmit(38000, IRlevel("0xb34cdf20"));
+                    consumerIrManagerApi.transmit(38000, IRlevel("b34cdf20"));
                 break;
             case R.id.key_11:
                 if (nemote.containsKey("KEY_LAST"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_LAST")));
                 else
-                    consumerIrManagerApi.transmit(38000, IRlevel("0xf609df20"));
+                    consumerIrManagerApi.transmit(38000, IRlevel("f609df20"));
                 break;
             case R.id.key_10:
                 if (nemote.containsKey("KEY_INPUT"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_INPUT")));
                 else
-                    consumerIrManagerApi.transmit(38000, IRlevel("0xfe01df20"));
+                    consumerIrManagerApi.transmit(38000, IRlevel("fe01df20"));
                 break;
             case R.id.btn_mute:
                 if (nemote.containsKey("KEY_MUTE"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_MUTE")));
                 else
-                    consumerIrManagerApi.transmit(38000, IRlevel("0xfe01df20"));
+                    consumerIrManagerApi.transmit(38000, IRlevel("fe01df20"));
                 break;
         }
     }
     // 根据十六进制遥控码值转换成遥控发射数组
     public static int[] IRlevel(String IRCode) {
+        Log.e(TAG, "IRlevel: "+IRCode );
         String IRCodeBinary = new StringBuilder(eraj(IRCode)).reverse().toString();
         int pattern[]=new int[IRCodeBinary.length()*2+4];
         pattern[0] = 9000;
@@ -302,6 +333,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         return pattern;
     }
     public static String eraj(String Hexstring) {
+        Log.e(TAG, "eraj: "+Hexstring );
         String form = "%4s";
         StringBuilder resoultBinaryString = new StringBuilder();
         for (char ch : Hexstring.toCharArray()){

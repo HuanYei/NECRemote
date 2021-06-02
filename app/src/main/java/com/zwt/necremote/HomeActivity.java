@@ -34,11 +34,15 @@ private Button pubic_remote,create_MTK_remote,create_RTK_remote,Storage_remote,c
                 startActivity(intent);
                 break;
             case R.id.create_MTK_remote:
-
+                Intent intent6=new Intent(HomeActivity.this,CreateMemoteActivity.class);
+                intent6.putExtra("IRType","MTK");
+                startActivity(intent6);
                 break;
             case R.id.create_RTK_remote:
                 Intent intent2=new Intent(HomeActivity.this,CreateMemoteActivity.class);
+                intent2.putExtra("IRType","RTK");
                 startActivity(intent2);
+
                 break;
             case R.id.Storage_remote:
                 Intent intent3=new Intent(HomeActivity.this,IRallActivity.class);

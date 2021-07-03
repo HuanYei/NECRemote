@@ -97,7 +97,7 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
         String code=ping[1].replace("0x","");
         code=codeFF(code);
         code="0x"+code;
-        String Headcode="0x20df";
+        String Headcode=IRHeaderCode.getText().toString();
         Headcode=Headcode.replace("0x","");
         System.out.println(Headcode);
         String a=Headcode.substring(0,2);

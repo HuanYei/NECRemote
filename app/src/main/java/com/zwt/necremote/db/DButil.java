@@ -81,5 +81,17 @@ public class DButil {
         db.close();
         return cursor;
     }
+    //查询所有遥控器
+    public boolean DELETEIR(String IRNAME){
+        DatabaseHelper mySQLiteOpenHelper=DatabaseHelper.getInstance(context);
+        SQLiteDatabase db = mySQLiteOpenHelper.getWritableDatabase();
+        String sql="DELETE FROM NECIR WHERE IRNAME='"+IRNAME+"'";
+        try {
+            db.execSQL(sql);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
 
 }

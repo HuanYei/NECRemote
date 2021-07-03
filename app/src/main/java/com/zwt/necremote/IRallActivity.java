@@ -11,8 +11,10 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.zwt.necremote.db.DButil;
+import com.zwt.necremote.utli.MyDialog;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,15 +28,17 @@ public static Map<String, String> getNemoteMap(){
 private String TAG="IRallActivity";
 private String IRall[];
 private DButil dbutil;
+private ArrayAdapter adapter;
+private ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_irall);
-        ListView listView=findViewById(R.id.list_iritem);
+        listView=findViewById(R.id.list_iritem);
         dbutil=new DButil(this);
         IRall=dbutil.selectIRALL();
         Log.e(TAG, "onCreate: "+IRall.toString() );
-        ArrayAdapter adapter;
+
         if (IRall!=null) {
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, IRall);
         }else {
@@ -42,6 +46,45 @@ private DButil dbutil;
         }
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(A());
+        listView.setOnItemLongClickListener(LongONclick());
+    }
+
+    private AdapterView.OnItemLongClickListener LongONclick() {
+            return new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    Log.e(TAG, "onItemLongClick: "+position );
+                    MyDialog myDialog=new MyDialog(IRallActivity.this,R.style.MyDialog);
+                    myDialog.setTitle("提示!!!");
+                    myDialog.setMessage("确定要删除吗？");
+                    myDialog.setYesOnclickListener("确定",new MyDialog.onYesOnclickListener(){
+                        @Override
+                        public void onYesOnclick() {
+                            if(dbutil.DELETEIR(IRall[position])) {
+                                Toast.makeText(IRallActivity.this, "成功删除", Toast.LENGTH_SHORT).show();
+                                IRall = dbutil.selectIRALL();
+                                adapter.notifyDataSetChanged();
+                                adapter = new ArrayAdapter<String>(IRallActivity.this, android.R.layout.simple_expandable_list_item_1, IRall);
+                                listView.setAdapter(adapter);
+                                myDialog.dismiss();
+                            }
+                            else {
+                                Toast.makeText(IRallActivity.this, "删除失败，请确保是否存在", Toast.LENGTH_SHORT).show();
+                                myDialog.dismiss();
+                            }
+                        }
+                    });
+                    myDialog.setNoOnclickListener("取消", new MyDialog.onNoOnclickListener() {
+                        @Override
+                        public void onNoClick() {
+                            myDialog.dismiss();
+                        }
+                    });
+                    myDialog.show();
+                    return true;
+
+                }
+            };
     }
 
     public AdapterView.OnItemClickListener A(){
@@ -82,4 +125,5 @@ private DButil dbutil;
             }
         };
     }
+
 }

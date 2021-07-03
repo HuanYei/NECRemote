@@ -38,7 +38,7 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="自定义遥控器"
+        android:text="线上遥控器"
         android:id="@+id/custom_remote"/>
 </LinearLayout>
 </RelativeLayout>

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">NECRemote</string>
     <string name="MTK_item_keycode">KEY_POWER=0x0B\nKEY_0=0x56</string>
+    <string name="remote_power_key">POWER</string>
+    <string name="remote_HIDE_key">HIDE SCREEN</string>
+    <string name="remote_SHOW_key">SHOW SCREEN</string>
 </resources>

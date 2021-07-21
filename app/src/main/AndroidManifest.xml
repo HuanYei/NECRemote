@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NECRemote">
-        <activity android:name=".IRallActivity"></activity>
+        <activity android:name=".NetworkRemoteActivity"></activity>
+        <activity android:name=".IRallActivity" />
         <activity android:name=".CreateMemoteActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>

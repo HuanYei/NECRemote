@@ -49,7 +49,8 @@ private Button pubic_remote,create_MTK_remote,create_RTK_remote,Storage_remote,c
                 startActivity(intent3);
                 break;
             case R.id.custom_remote:
-
+                Intent intent8=new Intent(HomeActivity.this,NetworkRemoteActivity.class);
+                startActivity(intent8);
                 break;
         }
 

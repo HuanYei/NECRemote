@@ -15,6 +15,9 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class NetworkRemoteActivity extends AppCompatActivity {
+    private String TAG="NetworkRemoteActivity";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,26 +31,42 @@ public class NetworkRemoteActivity extends AppCompatActivity {
     }
 
     public void showpanel(View view){
-        String url = "http://wwww.baidu.com";
+        String url = "http://liufujun.top/showblackpanel";
         OkHttpClient okHttpClient = new OkHttpClient();
         final Request request = new Request.Builder()
                 .url(url)
-                .get()//默认就是GET请求，可以不写
                 .build();
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
+        final Call call = okHttpClient.newCall(request);
+        new Thread(new Runnable() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                Log.d("SSSS", "onFailure: ");
+            public void run() {
+                try {
+                    Response response = call.execute();
+                    Log.d(TAG, "run: " + response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+        }).start();
 
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Log.d("SSSS", "onResponse: " + response.body().string());
-            }
-        });
     }
     public void hidepanel(View view){
-
+        String url = "http://liufujun.top/hideblackpanel";
+        OkHttpClient okHttpClient = new OkHttpClient();
+        final Request request = new Request.Builder()
+                .url(url)
+                .build();
+        final Call call = okHttpClient.newCall(request);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response response = call.execute();
+                    Log.d(TAG, "run: " + response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

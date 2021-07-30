@@ -78,8 +78,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         Button btn_vol_up = (Button)findViewById(R.id.btn_VOL_up);
         Button btn_vol_down = (Button)findViewById(R.id.btn_VOL_down);
 
-
-                       mRegionView = (RoundMenuView) findViewById(R.id.my_roundMenuView);
+        mRegionView = (RoundMenuView) findViewById(R.id.my_roundMenuView);
         mRegionView.setListener(new RoundMenuView.RegionViewClickListener() {
 
             @Override

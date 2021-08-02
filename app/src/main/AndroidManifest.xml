@@ -6,9 +6,7 @@
     <!-- 是否仅在支持红外的设备上运行 -->
     <uses-feature
         android:name="android.hardware.ConsumerIrManager"
-        android:required="false" />
-
-    <!-- 更新权限 -->
+        android:required="false" /> <!-- 更新权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -17,19 +15,22 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/netwrok_securit_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:networkSecurityConfig="@xml/netwrok_securit_config"
-        android:theme="@style/Theme.NECRemote">
-        <activity android:name=".NetworkRemoteActivity"></activity>
-        <activity android:name=".IRallActivity" />
-        <activity android:name=".CreateMemoteActivity" />
-        <activity android:name=".HomeActivity">
+        android:theme="@style/AppTheme">
+        <activity android:name=".ToptechActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".NetworkRemoteActivity" />
+        <activity android:name=".IRallActivity" />
+        <activity android:name=".CreateMemoteActivity" />
+        <activity android:name=".HomeActivity">
+
         </activity>
         <activity android:name=".MainActivity2" />
         <activity android:name=".MainActivity" />

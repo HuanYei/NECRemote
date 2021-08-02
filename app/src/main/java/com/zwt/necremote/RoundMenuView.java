@@ -99,10 +99,10 @@ public class RoundMenuView extends View {
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.FILL);
         mPaint.setAntiAlias(true);
-        mPaint.setColor(Color.parseColor("#FF6200EE"));
+        mPaint.setColor(Color.parseColor("#FF018786"));
 
         mClickPaint = new Paint(mPaint);
-        mClickPaint.setColor(Color.parseColor("#FF3700B3"));
+        mClickPaint.setColor(Color.parseColor("#FF018786"));
 
         mPathLeft = new Path();
         mPathTop = new Path();

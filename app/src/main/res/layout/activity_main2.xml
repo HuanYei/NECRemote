@@ -125,29 +125,6 @@
         android:background="@drawable/ic_logo_chrome"
         />
 
-    <!--    <EditText-->
-    <!--        android:layout_marginRight="100px"-->
-    <!--        android:id="@+id/et_customerId"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:hint="1,0xf40bdf20,KEY_POWER"-->
-    <!--        android:layout_below="@id/btn_send"-->
-    <!--        />-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/btn_send"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/btn_chrom"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:text="生产自定义遥控器"/>-->
-    <!--    <Button-->
-    <!--        android:id="@+id/btn_receive"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/btn_send"-->
-    <!--        android:layout_centerHorizontal="true"-->
-    <!--        android:text="接收"/>-->
     <LinearLayout
         android:gravity="center"
         android:layout_marginTop="5dp"
@@ -251,7 +228,6 @@
         android:layout_width="match_parent"
         android:layout_height="300px"
         android:layout_weight="1" >
-
         <TextView
             android:id="@+id/freqs_text"
             android:layout_width="wrap_content"

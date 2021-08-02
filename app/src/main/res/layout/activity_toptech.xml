@@ -34,22 +34,12 @@
         <LinearLayout
             android:id="@+id/数字键LinearLayout"
             android:gravity="center"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/btn_power"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
 
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/key_0"
-                    android:text="0"/>
-            </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
@@ -116,7 +106,28 @@
                     android:id="@+id/key_9"
                     android:text="9"/>
             </LinearLayout>
-
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/key_缩放"
+                    android:text="缩放"/>
+                <Button
+                    android:layout_marginLeft="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/key_0"
+                    android:text="0"/>
+                <Button
+                    android:layout_marginLeft="7dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/key_LIST"
+                    android:text="LIST"/>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -404,8 +415,8 @@
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/key_缩放"
-                    android:text="缩放"/>
+                    android:id="@+id/key_切换"
+                    android:text="切换"/>
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"

@@ -12,7 +12,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <Button
+         <Button
+            android:onClick="onClick"
+
             android:layout_marginLeft="30dp"
             android:id="@+id/btn_power"
             android:layout_marginTop="30dp"
@@ -21,7 +23,8 @@
             android:background="@drawable/ic_logo_power"
             />
 
-        <Button
+         <Button
+            android:onClick="onClick"
             android:layout_marginRight="30dp"
             android:id="@+id/btn_mute"
             android:layout_alignParentRight="true"
@@ -34,7 +37,7 @@
         <LinearLayout
             android:id="@+id/数字键LinearLayout"
             android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:layout_below="@id/btn_power"
             android:layout_width="match_parent"
             android:orientation="vertical"
@@ -44,18 +47,22 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_1"
                     android:text="1"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
+
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_2"
                     android:text="2"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -66,18 +73,21 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_4"
                     android:text="4"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_5"
                     android:text="5"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,18 +98,21 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_7"
                     android:text="7"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_8"
                     android:text="8"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,18 +123,21 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_缩放"
                     android:text="缩放"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_0"
                     android:text="0"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -137,7 +153,8 @@
 
 
 
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/数字键LinearLayout"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
@@ -146,7 +163,8 @@
             android:layout_height="wrap_content"
             android:text="信号源" />
 
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/数字键LinearLayout"
             android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
@@ -165,7 +183,8 @@
 
 
 
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/my_roundMenuView"
             android:layout_marginLeft="20dp"
             android:id="@+id/btn_menu"
@@ -173,7 +192,8 @@
             android:layout_height="wrap_content"
             android:text="菜单"/>
 
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/my_roundMenuView"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
@@ -182,7 +202,8 @@
             android:layout_height="wrap_content"
             android:text="退出" />
 
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/btn_menu"
             android:id="@+id/btn_CH_up"
             android:layout_marginLeft="37dp"
@@ -190,7 +211,8 @@
             android:layout_height="wrap_content"
             android:text="频道+"
             />
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/btn_CH_up"
             android:id="@+id/btn_CH_down"
             android:layout_marginLeft="37dp"
@@ -199,7 +221,8 @@
             android:text="频道-"
             />
 
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/btn_exit"
             android:id="@+id/btn_VOL_up"
             android:layout_marginRight="37dp"
@@ -208,7 +231,8 @@
             android:layout_height="wrap_content"
             android:text="声音+"
             />
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/btn_VOL_up"
             android:id="@+id/btn_VOL_down"
             android:layout_marginRight="37dp"
@@ -218,7 +242,8 @@
             android:text="频道-"
             />
 
-        <Button
+         <Button
+                    android:onClick="onClick"
 
             android:layout_below="@id/my_roundMenuView"
             android:layout_marginTop="15dp"
@@ -230,7 +255,8 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/ic_baseline_home_24"
             />
-        <Button
+         <Button
+                    android:onClick="onClick"
             android:layout_below="@id/btn_home"
             android:id="@+id/btn_喜爱"
             android:layout_centerInParent="true"
@@ -251,52 +277,60 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_老化"
                     android:text="老化"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_复位"
                     android:text="复位"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_频点"
                     android:text="频点"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_版本"
-                    android:text="版本"/>
+                    android:text="工厂菜单"/>
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_CC"
                     android:text="CC"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_高清"
                     android:text="高清"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_MAC"
                     android:text="MAC"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -307,53 +341,61 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_按键"
                     android:text="按键"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_测试"
                     android:text="测试"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_CIINF"
                     android:text="CIINF"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/key_HD.K"
+                    android:id="@+id/key_HDK"
                     android:text="HD.K"/>
             </LinearLayout>
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_LNB"
                     android:text="LNB"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_网线"
                     android:text="网线"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_WIFI"
                     android:text="WIFI"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -364,25 +406,29 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_MTS"
                     android:text="MTS"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_省电"
                     android:text="省电"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_图像"
                     android:text="图像"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -393,25 +439,29 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_播放暂停"
                     android:text="▶||"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_上一首"
                     android:text="┃◀◀"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_下一首"
                     android:text="▶▶┃"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -422,25 +472,29 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_停止"
                     android:text="■"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_快退"
                     android:text="◀◀"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_快进"
                     android:text="▶▶"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -451,25 +505,29 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_刻录"
                     android:text="刻录"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_刻录列表"
                     android:text="刻录列表"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_时移"
                     android:text="时移"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -480,27 +538,31 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:background="@color/red"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_红色"
 
                     />
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_绿色"
                     android:background="@color/green"
                     />
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_黄色"
                     android:background="@color/yellow"/>
-                <Button
+                 <Button
+                    android:onClick="onClick"
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

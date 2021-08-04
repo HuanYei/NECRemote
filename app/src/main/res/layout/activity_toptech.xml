@@ -142,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_LIST"
-                    android:text="LIST"/>
+                    android:text="历史"/>
             </LinearLayout>
 
         </LinearLayout>

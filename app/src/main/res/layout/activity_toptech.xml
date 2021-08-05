@@ -212,7 +212,7 @@
             android:text="频道+"
             />
          <Button
-                    android:onClick="onClick"
+             android:onClick="onClick"
             android:layout_below="@id/btn_CH_up"
             android:id="@+id/btn_CH_down"
             android:layout_marginLeft="37dp"
@@ -239,7 +239,7 @@
             android:layout_alignParentRight="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="频道-"
+            android:text="声音-"
             />
 
          <Button

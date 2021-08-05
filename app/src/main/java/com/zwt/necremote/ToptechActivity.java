@@ -37,7 +37,7 @@ public class ToptechActivity extends AppCompatActivity {
             try {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0c"));
             }catch (Exception e){
-                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_LONG).show();
+                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
             }
                 Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
                 vibrator.vibrate(300);
@@ -48,7 +48,7 @@ public class ToptechActivity extends AppCompatActivity {
                 try {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("17"));
             }catch (Exception e){
-                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_LONG).show();
+                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
             }
                 Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
                 vibrator.vibrate(300);
@@ -59,7 +59,7 @@ public class ToptechActivity extends AppCompatActivity {
             try {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("05"));
             }catch (Exception e){
-                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_LONG).show();
+                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
             }
                 Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
                 vibrator.vibrate(300);
@@ -70,7 +70,7 @@ public class ToptechActivity extends AppCompatActivity {
             try {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0d"));
             }catch (Exception e){
-                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_LONG).show();
+                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
             }
                 Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
                 vibrator.vibrate(300);
@@ -81,7 +81,7 @@ public class ToptechActivity extends AppCompatActivity {
             try {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("02"));
             }catch (Exception e){
-                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_LONG).show();
+                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
             }
                 Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
                 vibrator.vibrate(300);
@@ -281,7 +281,7 @@ public class ToptechActivity extends AppCompatActivity {
                 break;
         }
         }catch (Exception e){
-            Toast.makeText(this,"您的手机没有红外功能",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
         }
     }
 }

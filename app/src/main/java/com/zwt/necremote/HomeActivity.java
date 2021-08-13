@@ -30,7 +30,7 @@ private Button pubic_remote,create_MTK_remote,create_RTK_remote,Storage_remote,c
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.pubic_remote:
-                Intent intent=new Intent(HomeActivity.this,MainActivity.class);
+                Intent intent=new Intent(HomeActivity.this,ToptechActivity.class);
                 startActivity(intent);
                 break;
             case R.id.create_MTK_remote:

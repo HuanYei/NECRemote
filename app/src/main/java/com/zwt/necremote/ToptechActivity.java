@@ -136,13 +136,13 @@ public class ToptechActivity extends AppCompatActivity {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("56"));
                 break;
             case R.id.key_缩放:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0E"));
+                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("51"));
                 break;
             case R.id.key_LIST:
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("09"));
                 break;
             case R.id.btn_source:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("1B"));
+                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("01"));
                 break;
             case R.id.btn_信息:
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("50"));
@@ -151,7 +151,7 @@ public class ToptechActivity extends AppCompatActivity {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("4e"));
                 break;
             case R.id.btn_exit:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("01"));
+                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("1b"));
                 break;
             case R.id.btn_CH_up:
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("55"));
@@ -166,10 +166,10 @@ public class ToptechActivity extends AppCompatActivity {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("40"));
                 break;
             case R.id.btn_home:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("4b"));
+                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("06"));
                 break;
             case R.id.btn_喜爱:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("5b"));
+                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("10"));
                 break;
             case R.id.key_老化:
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("3c"));
@@ -232,7 +232,7 @@ public class ToptechActivity extends AppCompatActivity {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("07"));
                 break;
             case R.id.key_播放暂停:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("59"));
+                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("16"));
                 break;
             case R.id.key_上一首:
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("00"));
@@ -244,7 +244,7 @@ public class ToptechActivity extends AppCompatActivity {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("39"));
                 break;
             case R.id.key_停止:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("49"));
+                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("12"));
                 break;
             case R.id.key_快退:
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("1a"));

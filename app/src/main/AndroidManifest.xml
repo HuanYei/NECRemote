@@ -21,17 +21,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ToptechActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".NetworkRemoteActivity" />
         <activity android:name=".IRallActivity" />
         <activity android:name=".CreateMemoteActivity" />
         <activity android:name=".HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MainActivity2" />
         <activity android:name=".MainActivity" />

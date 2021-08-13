@@ -46,7 +46,7 @@
                 android:gravity="center"
                 android:lines="1"
                 android:text="取消"
-                android:textColor="#FFFFFF"
+                android:textColor="#FF9900"
                 android:textSize="25dp"/>
             <View
                 android:layout_width="1px"
@@ -62,7 +62,7 @@
                 android:gravity="center"
                 android:lines="1"
                 android:text="确定"
-                android:textColor="#FFFFFF"
+                android:textColor="#777575"
                 android:textSize="25dp"/>
         </LinearLayout>
     </LinearLayout>

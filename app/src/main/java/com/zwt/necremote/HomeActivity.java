@@ -7,9 +7,13 @@ import android.graphics.SweepGradient;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.zwt.necremote.db.DButil;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 private Button pubic_remote,create_MTK_remote,create_RTK_remote,Storage_remote,custom_remote;
+private DButil dbutil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +28,7 @@ private Button pubic_remote,create_MTK_remote,create_RTK_remote,Storage_remote,c
         create_RTK_remote.setOnClickListener(this::onClick);
         Storage_remote.setOnClickListener(this::onClick);
         custom_remote.setOnClickListener(this::onClick);
+        dbutil=new DButil(this);
     }
 
     @Override
@@ -45,8 +50,12 @@ private Button pubic_remote,create_MTK_remote,create_RTK_remote,Storage_remote,c
 
                 break;
             case R.id.Storage_remote:
-                Intent intent3=new Intent(HomeActivity.this,IRallActivity.class);
-                startActivity(intent3);
+                if (dbutil.selectIRALL()==null){
+                    Toast.makeText(HomeActivity.this, "You don't have a stored remote control", Toast.LENGTH_SHORT).show();
+                }else {
+                    Intent intent3 = new Intent(HomeActivity.this, IRallActivity.class);
+                    startActivity(intent3);
+                }
                 break;
             case R.id.custom_remote:
                 Intent intent8=new Intent(HomeActivity.this,NetworkRemoteActivity.class);

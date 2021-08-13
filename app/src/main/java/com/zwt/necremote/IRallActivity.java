@@ -36,12 +36,19 @@ private ListView listView;
         setContentView(R.layout.activity_irall);
         listView=findViewById(R.id.list_iritem);
         dbutil=new DButil(this);
-        IRall=dbutil.selectIRALL();
-        Log.e(TAG, "onCreate: "+IRall.toString() );
+        try {
+            IRall=dbutil.selectIRALL();
+        }catch (Exception e){
+            IRall=null;
+        }
+
+
 
         if (IRall!=null) {
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, IRall);
+            Log.e(TAG, "onCreate: "+IRall.toString() );
         }else {
+
             adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1,new String[]{"暂无遥控器，快去创建吧。"});
         }
         listView.setAdapter(adapter);

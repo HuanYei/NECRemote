@@ -12,6 +12,10 @@ import android.widget.Toast;
 
 import com.zwt.necremote.utli.NECutli;
 
+import java.lang.reflect.Field;
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class ToptechActivity extends AppCompatActivity {
     ConsumerIrManagerApi consumerIrManagerApi;
     private RoundMenuView mRegionView;
@@ -34,17 +38,14 @@ public class ToptechActivity extends AppCompatActivity {
 
             @Override
             public void clickLeft() {
-            try {
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0c"));
-            }catch (Exception e){
-                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
-            }
-                Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                vibrator.vibrate(300);
+                Log.e("TAG", "松开");
+                clicklongthread.interrupt();
+                isRunning=false;
             }
 
             @Override
             public void clickTop() {
+                Log.e("TAG", "松开");
                 try {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("17"));
             }catch (Exception e){
@@ -56,6 +57,7 @@ public class ToptechActivity extends AppCompatActivity {
 
             @Override
             public void clickRight() {
+                Log.e("TAG", "松开");
             try {
                 consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("05"));
             }catch (Exception e){
@@ -86,11 +88,57 @@ public class ToptechActivity extends AppCompatActivity {
                 Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
                 vibrator.vibrate(300);
             }
+
+            @Override
+            public void clicklongLeft() {
+                Log.e("TAG", "按下");
+                try {
+                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0c"));
+                }catch (Exception e){
+                    Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
+                }
+                Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
+                vibrator.vibrate(300);
+
+                clicklongthread.start();
+            }
+
+            @Override
+            public void clicklongTop() {
+
+            }
+
+            @Override
+            public void clicklongRight() {
+
+            }
+
+            @Override
+            public void clicklongBottom() {
+
+            }
+
+            @Override
+            public void clicklongCenter() {
+
+            }
         });
     }
 
-
-
+    Thread clicklongthread =new Thread(new Runnable() {
+        @Override
+        public void run() {
+            while (isRunning) {
+                try {
+                    Thread.sleep(110);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                consumerIrManagerApi.transmit(38000, new int[]{9000, 2250, 560, 560});
+            }
+        }
+    });
+    boolean isRunning = true;
 
     public void onClick(View v) {
         Vibrator vibrator = (Vibrator)this.getSystemService(this.VIBRATOR_SERVICE);

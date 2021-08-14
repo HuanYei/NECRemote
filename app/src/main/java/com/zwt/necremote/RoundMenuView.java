@@ -73,7 +73,6 @@ public class RoundMenuView extends View {
     private Region mRegionCenter;
 
     private int mRadius;
-
     private static final int LEFT = 0;
     private static final int TOP = 1;
     private static final int RIGHT = 2;
@@ -234,25 +233,71 @@ public class RoundMenuView extends View {
         initPath();
     }
 
+    int mLastMotionX=0;
+    int mLastMotionY=0;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // 减去移除 的位置
         mCurX = (int) event.getX() - getMeasuredWidth() / 2;
         mCurY = (int) event.getY() - getMeasuredHeight() / 2;
+        int eventTime = (int) event.getEventTime();
+        int lastDownTime=(int) event.getDownTime();
 
+        int x=(int) event.getX();
+        int y=(int) event.getY();
+        boolean   mIsLongPressed =false;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 containRect(mCurX, mCurY);
+                if (mClickFlag != -1) {
+                    switch (mClickFlag) {
+                        case RIGHT:
+                            if (mListener != null) {
+                                mListener.clicklongRight();
+                            }
+                            break;
+                        case BOTTOM:
+                            if (mListener != null) {
+                                mListener.clicklongBottom();
+                            }
+                            break;
+                        case LEFT:
+                            if (mListener != null) {
+                                mListener.clicklongLeft();
+                            }
+                            break;
+                        case TOP:
+                            if (mListener != null) {
+                                mListener.clicklongTop();
+                            }
+                            break;
+                        case CENTER:
+                            if (mListener != null) {
+                                mListener.clicklongCenter();
+                            }
+                            break;
+                    }
+                    mClickFlag = -1;
+                }
+                containRect(mCurX, mCurY);
+                mLastMotionX=(int) event.getX();
+                mLastMotionY=(int) event.getY();
+
                 invalidate();
                 break;
             case MotionEvent.ACTION_MOVE:
+
                 if (mClickFlag != -1) {
                     containRect(mCurX, mCurY);
                 }
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
+//                mIsLongPressed = isLongPressed(mLastMotionX, mLastMotionY, x, y, lastDownTime,eventTime,500);
+//                Log.e("TAG", "onTouchEvent: "+ mIsLongPressed+"  "+mClickFlag);
                 if (mClickFlag != -1) {
+
                     switch (mClickFlag) {
                         case RIGHT:
                             if (mListener != null) {
@@ -282,6 +327,7 @@ public class RoundMenuView extends View {
                     }
                     mClickFlag = -1;
                 }
+
                 invalidate();
                 break;
             default:
@@ -342,6 +388,21 @@ public class RoundMenuView extends View {
 
         // 中间按钮被点击了
         public void clickCenter();
+
+        // 左边按钮被长按了
+        public void clicklongLeft();
+
+        // 上边按钮被长按了
+        public void clicklongTop();
+
+        // 右边按钮被长按了
+        public void clicklongRight();
+
+        // 下边按钮被长按了
+        public void clicklongBottom();
+
+        // 中间按钮被长按了
+        public void clicklongCenter();
     }
     private Bitmap getBitmap(Context context, int drawableId){
         Bitmap bitmap;
@@ -352,5 +413,31 @@ public class RoundMenuView extends View {
             bitmap = BitmapFactory.decodeResource(context.getResources() , drawableId);
         }
         return bitmap;
+    }
+    /**
+     * * 判断是否有长按动作发生 * @param lastX 按下时X坐标 * @param lastY 按下时Y坐标 *
+     *
+     * @param thisX
+     *            移动时X坐标 *
+     * @param thisY
+     *            移动时Y坐标 *
+     * @param lastDownTime
+     *            按下时间 *
+     * @param thisEventTime
+     *            移动时间 *
+     * @param longPressTime
+     *            判断长按时间的阀值
+     */
+    static boolean isLongPressed(float lastX, float lastY, float thisX,
+                                 float thisY, long lastDownTime, long thisEventTime,
+                                 long longPressTime) {
+        Log.e("TAG", "lastX: "+lastX+"lastY: "+lastY+"thisX: "+thisX+"thisY: "+thisY);
+        float offsetX = Math.abs(thisX - lastX);
+        float offsetY = Math.abs(thisY - lastY);
+        long intervalTime = thisEventTime - lastDownTime;
+        if (offsetX <= 100 && offsetY <= 100 && intervalTime >= longPressTime) {
+            return true;
+        }
+        return false;
     }
 }

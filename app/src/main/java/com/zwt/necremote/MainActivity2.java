@@ -122,6 +122,31 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 else
                     consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_exit);
             }
+
+            @Override
+            public void clicklongLeft() {
+
+            }
+
+            @Override
+            public void clicklongTop() {
+
+            }
+
+            @Override
+            public void clicklongRight() {
+
+            }
+
+            @Override
+            public void clicklongBottom() {
+
+            }
+
+            @Override
+            public void clicklongCenter() {
+
+            }
         });
             btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override

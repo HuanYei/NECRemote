@@ -58,6 +58,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
+            public void clicklongLeft() {
+
+            }
+
+            @Override
+            public void clicklongTop() {
+
+            }
+
+            @Override
+            public void clicklongRight() {
+
+            }
+
+            @Override
+            public void clicklongBottom() {
+
+            }
+
+            @Override
+            public void clicklongCenter() {
+
+            }
+
+            @Override
             public void clickBottom() {
                 consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_down);
             }

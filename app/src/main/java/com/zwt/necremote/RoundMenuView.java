@@ -235,7 +235,7 @@ public class RoundMenuView extends View {
 
     int mLastMotionX=0;
     int mLastMotionY=0;
-
+    int button;
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // 减去移除 的位置
@@ -281,6 +281,7 @@ public class RoundMenuView extends View {
                     mClickFlag = -1;
                 }
                 containRect(mCurX, mCurY);
+                button=mClickFlag;
                 mLastMotionX=(int) event.getX();
                 mLastMotionY=(int) event.getY();
 
@@ -291,6 +292,7 @@ public class RoundMenuView extends View {
                 if (mClickFlag != -1) {
                     containRect(mCurX, mCurY);
                 }
+                mListener.clicklongbuton();
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
@@ -403,6 +405,9 @@ public class RoundMenuView extends View {
 
         // 中间按钮被长按了
         public void clicklongCenter();
+
+        // 长按按钮时移动了
+        public void clicklongbuton();
     }
     private Bitmap getBitmap(Context context, int drawableId){
         Bitmap bitmap;

@@ -40,53 +40,31 @@ public class ToptechActivity extends AppCompatActivity implements View.OnTouchLi
 
             @Override
             public void clickLeft() {
-                Log.e("TAG", "松开");
                 isRunning=false;
             }
 
             @Override
             public void clickTop() {
-                Log.e("TAG", "松开");
-                try {
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("17"));
-                }catch (Exception e){
-                    Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
-                }
-                    Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                    vibrator.vibrate(300);
+                isRunning=false;
             }
 
             @Override
             public void clickRight() {
-                Log.e("TAG", "松开");
                 isRunning=false;
             }
 
             @Override
             public void clickBottom() {
-            try {
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0d"));
-            }catch (Exception e){
-                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
-            }
-                Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                vibrator.vibrate(300);
+                isRunning=false;
             }
 
             @Override
             public void clickCenter() {
-            try {
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("02"));
-            }catch (Exception e){
-                Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
-            }
-                Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                vibrator.vibrate(300);
+                isRunning=false;
             }
 
             @Override
             public void clicklongLeft() {
-                Log.e("TAG", "按下");
                 try {
                     consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0c"));
                 }catch (Exception e){
@@ -100,7 +78,14 @@ public class ToptechActivity extends AppCompatActivity implements View.OnTouchLi
 
             @Override
             public void clicklongTop() {
-
+                try {
+                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("17"));
+                }catch (Exception e){
+                    Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
+                }
+                Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
+                vibrator.vibrate(300);
+                isRunning=true;
             }
 
             @Override
@@ -114,21 +99,33 @@ public class ToptechActivity extends AppCompatActivity implements View.OnTouchLi
                 vibrator.vibrate(300);
                 isRunning=true;
             }
-
             @Override
             public void clicklongBottom() {
-
+                try {
+                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0d"));
+                }catch (Exception e){
+                    Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
+                }
+                Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
+                vibrator.vibrate(300);
             }
-
             @Override
             public void clicklongCenter() {
-
+                try {
+                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("02"));
+                }catch (Exception e){
+                    Toast.makeText(ToptechActivity.this,"您的手机没有红外功能",Toast.LENGTH_SHORT).show();
+                }
+                Vibrator vibrator = (Vibrator)ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
+                vibrator.vibrate(300);
+                isRunning=true;
             }
 
             @Override
             public void clicklongbuton() {
                 isRunning=false;
             }
+
         });
     }
 

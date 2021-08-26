@@ -146,14 +146,8 @@
 
         </LinearLayout>
 
-
-
-
-
-
-
          <Button
-                    android:onClick="onClick"
+             android:onClick="onClick"
             android:layout_below="@id/数字键LinearLayout"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"

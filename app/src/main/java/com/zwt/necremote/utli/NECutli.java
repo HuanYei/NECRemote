@@ -1,6 +1,16 @@
 package com.zwt.necremote.utli;
 
 public class  NECutli {
+    static String keyCode;
+
+    public static String getKeyCode() {
+        return keyCode;
+    }
+
+    public void setKeyCode(String keyCode) {
+        this.keyCode = keyCode;
+    }
+
     // 根据十六进制遥控码值转换成遥控发射数组
     public static int[] IRlevel(String IRCode) {
 
@@ -34,6 +44,7 @@ public class  NECutli {
     }
 
     public static  int[] toRKTCODE(String IRCODEKEY){
+        keyCode = IRCODEKEY;
         String code=IRCODEKEY;
         code=codeFF(code);
         String Headcode="20df";

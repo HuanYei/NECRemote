@@ -48,17 +48,17 @@ public class  NECutli {
         String code=IRCODEKEY;
         code=codeFF(code);
         String Headcode="20df";
-        System.out.println(Headcode);
+//        System.out.println(Headcode);
         String a=Headcode.substring(0,2);
         String b=Headcode.substring(2,4);
         code=code+b+a;
         IRCODEKEY=code;
-        System.out.println(IRCODEKEY);
+//        System.out.println(IRCODEKEY);
         return IRlevel(IRCODEKEY);
     }
 
     private static String codeFF(String code) {
-        System.out.println(code);
+//        System.out.println(code);
         Integer a=Integer.parseInt(code,16);
         Integer c=255-a;
         return Integer.toHexString(c)+code;

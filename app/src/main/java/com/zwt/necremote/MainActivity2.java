@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
@@ -23,6 +24,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     private Button button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,button11,button0,btn_mute;
     private Map<String, String> nemote;
     private RoundMenuView mRegionView;
+    private Vibrator vibrator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onStart() {
         super.onStart();
+        vibrator = (Vibrator) MainActivity2.this.getSystemService(MainActivity2.this.VIBRATOR_SERVICE);
         listView=findViewById(R.id.IR_customlistView);
         Intent intent=getIntent();
         String[] IRCODE=intent.getStringArrayExtra("IRCODE");
@@ -83,6 +86,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void clickLeft() {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_LEFT"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_LEFT")));
                 else
@@ -92,7 +96,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void clickTop() {
-                Log.e(TAG, "clickTop: "+ nemote.get("KEY_UP"));
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_UP"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_UP")));
                 else
@@ -101,6 +105,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void clickRight() {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_RIGHT"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_RIGHT")));
                 else
@@ -109,6 +114,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void clickBottom() {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_DOWN"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_DOWN")));
                 else
@@ -117,6 +123,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void clickCenter() {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_ENTER"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_ENTER")));
                 else
@@ -156,6 +163,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
             btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_BACK"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_BACK")));
                 else
@@ -165,6 +173,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_epg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_EPG"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_EPG")));
                 else
@@ -174,6 +183,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 //nemote KEY_MENU
                 if (nemote.containsKey("KEY_MENU"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_MENU")));
@@ -184,6 +194,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_source.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_INPUT"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_INPUT")));
                 else
@@ -193,6 +204,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_power.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_POWER"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_POWER")));
                 else
@@ -202,6 +214,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_HOME"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_HOME")));
                 else
@@ -211,6 +224,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_chrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_BROWSER"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_BROWSER")));
                 else
@@ -220,6 +234,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_ch_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_CHANNELUP"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_CHANNELUP")));
                 else
@@ -229,6 +244,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_ch_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_CHANNELDOWN"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_CHANNELDOWN")));
                 else
@@ -238,6 +254,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_vol_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_VOLUMEUP"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_VOLUMEUP")));
                 else
@@ -247,6 +264,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         btn_vol_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                vibrator.vibrate(300);
                 if (nemote.containsKey("KEY_VOLUMEDOWN"))
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_VOLUMEDOWN")));
                 else
@@ -257,6 +275,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+        vibrator.vibrate(300);
         switch (v.getId()){
             case R.id.key_0:
                 if (nemote.containsKey("KEY_0"))

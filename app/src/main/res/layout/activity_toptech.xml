@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
          <Button
-            android:onClick="onClick"
+            
             android:layout_marginLeft="30dp"
             android:id="@+id/btn_power"
             android:layout_marginTop="30dp"
@@ -23,7 +23,7 @@
             />
 
          <Button
-            android:onClick="onClick"
+            
             android:layout_marginRight="30dp"
             android:id="@+id/btn_mute"
             android:layout_alignParentRight="true"
@@ -47,13 +47,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_1"
                     android:text="1"/>
                  <Button
-                    android:onClick="onClick"
+                    
 
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
                     android:id="@+id/key_2"
                     android:text="2"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -73,20 +73,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_4"
                     android:text="4"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_5"
                     android:text="5"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -98,20 +98,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_7"
                     android:text="7"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_8"
                     android:text="8"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -123,20 +123,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_缩放"
                     android:text="缩放"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_0"
                     android:text="0"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
         </LinearLayout>
 
          <Button
-             android:onClick="onClick"
+             
             android:layout_below="@id/数字键LinearLayout"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
@@ -157,7 +157,7 @@
             android:text="信号源" />
 
          <Button
-                    android:onClick="onClick"
+                    
             android:layout_below="@id/数字键LinearLayout"
             android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"
@@ -177,7 +177,7 @@
 
 
          <Button
-                    android:onClick="onClick"
+                    
             android:layout_below="@id/my_roundMenuView"
             android:layout_marginLeft="20dp"
             android:id="@+id/btn_menu"
@@ -186,7 +186,7 @@
             android:text="菜单"/>
 
          <Button
-                    android:onClick="onClick"
+                    
             android:layout_below="@id/my_roundMenuView"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
@@ -196,7 +196,7 @@
             android:text="退出" />
 
          <Button
-                    android:onClick="onClick"
+                    
             android:layout_below="@id/btn_menu"
             android:id="@+id/btn_CH_up"
             android:layout_marginLeft="37dp"
@@ -205,7 +205,7 @@
             android:text="频道+"
             />
          <Button
-             android:onClick="onClick"
+             
             android:layout_below="@id/btn_CH_up"
             android:id="@+id/btn_CH_down"
             android:layout_marginLeft="37dp"
@@ -215,7 +215,7 @@
             />
 
          <Button
-                    android:onClick="onClick"
+                    
             android:layout_below="@id/btn_exit"
             android:id="@+id/btn_VOL_up"
             android:layout_marginRight="37dp"
@@ -225,7 +225,7 @@
             android:text="声音+"
             />
          <Button
-                    android:onClick="onClick"
+                    
             android:layout_below="@id/btn_VOL_up"
             android:id="@+id/btn_VOL_down"
             android:layout_marginRight="37dp"
@@ -236,7 +236,7 @@
             />
 
          <Button
-                    android:onClick="onClick"
+                    
 
             android:layout_below="@id/my_roundMenuView"
             android:layout_marginTop="15dp"
@@ -249,7 +249,7 @@
             android:background="@drawable/ic_baseline_home_24"
             />
          <Button
-                    android:onClick="onClick"
+                    
             android:layout_below="@id/btn_home"
             android:id="@+id/btn_喜爱"
             android:layout_centerInParent="true"
@@ -271,27 +271,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_老化"
                     android:text="老化"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_复位"
                     android:text="复位"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_频点"
                     android:text="频点"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -303,27 +303,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_CC"
                     android:text="CC"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_高清"
                     android:text="高清"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_MAC"
                     android:text="MAC"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -335,27 +335,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_按键"
                     android:text="按键"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_测试"
                     android:text="测试"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_CIINF"
                     android:text="CIINF"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -367,28 +367,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_LNB"
                     android:text="LNB"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_网线"
                     android:text="网线"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_WIFI"
                     android:text="WIFI"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -400,28 +400,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_MTS"
                     android:text="MTS"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_省电"
                     android:text="省电"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_图像"
                     android:text="图像"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -433,28 +433,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_播放暂停"
                     android:text="▶||"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_上一首"
                     android:text="┃◀◀"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_下一首"
                     android:text="▶▶┃"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -466,28 +466,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_停止"
                     android:text="■"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_快退"
                     android:text="◀◀"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_快进"
                     android:text="▶▶"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -499,28 +499,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_刻录"
                     android:text="刻录"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_刻录列表"
                     android:text="刻录列表"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_时移"
                     android:text="时移"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -532,7 +532,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                  <Button
-                    android:onClick="onClick"
+                    
                     android:background="@color/red"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -540,7 +540,7 @@
 
                     />
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -548,14 +548,14 @@
                     android:background="@color/green"
                     />
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/key_黄色"
                     android:background="@color/yellow"/>
                  <Button
-                    android:onClick="onClick"
+                    
                     android:layout_marginLeft="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

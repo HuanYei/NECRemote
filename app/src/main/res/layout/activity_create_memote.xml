@@ -29,12 +29,12 @@
         android:layout_height="0dp"/>
     <Button
         android:id="@+id/create"
-        android:text="create"
+        android:text="创建"
         android:layout_weight="3"
         android:layout_width="match_parent"
         android:layout_height="0dp"/>
     <Button
-        android:text="empty"
+        android:text="清空"
         android:id="@+id/empty"
         android:layout_weight="3"
         android:layout_width="match_parent"

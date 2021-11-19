@@ -57,6 +57,75 @@ public class  NECutli {
         return IRlevel(IRCODEKEY);
     }
 
+    public static  int[] toPublicRTKCODE(String IRCODEKEY,String USERCODE){
+        keyCode = IRCODEKEY;
+        String code=IRCODEKEY;
+        code=codeFF(code);
+        String Headcode=codeFF(USERCODE);
+        String a=Headcode.substring(0,2);
+        String b=Headcode.substring(2,4);
+        code=code+b+a;
+        IRCODEKEY=code;
+        return IRlevel(IRCODEKEY);
+    }
+
+    // 根据十六进制遥控码值转换成遥控发射数组
+    public static int[] IRlevel_KK(String IRCODE) {
+        String ma=IRCODE;
+        char aj[]=ma.toCharArray();
+        String ajer="";
+
+        for (int i = 0; i < aj.length; i++) {
+            ajer+=eraj(aj[i]+"");
+        }
+
+        System.out.println(ajer);
+        List<Integer> list=new ArrayList<Integer>();
+        list.add(3000);list.add(3000);
+        for (int i =0; i <=ajer.length()-1; i++) {
+            if (ajer.charAt(i)=='1') {
+                list.add(500);list.add(2500);
+            }else {
+                list.add(500);list.add(1500);
+            }
+        }
+        list.add(500);list.add(40000);
+        int pattern[]=new int[list.size()];
+        for (int i = 0; i < pattern.length; i++) {
+            pattern[i]=list.get(i);
+        }
+        System.out.println(list.toString());
+        return pattern;
+    }
+
+    // 根据十六进制遥控码值转换成遥控发射数组
+    public static int[] IRlevel_SAM(String IRCODE) {
+        String ma=IRCODE;
+        char aj[]=ma.toCharArray();
+        String ajer="";
+        for (int i = 0; i < aj.length; i++) {
+            ajer+=eraj(aj[i]+"");
+        }
+        System.out.println(ajer);
+        List<Integer> list=new ArrayList<Integer>();
+        list.add(4500);list.add(4500);
+        for (int i =ajer.length()-1; i >=0; i--) {
+            if (ajer.charAt(i)=='1') {
+                list.add(560);list.add(1690);
+            }else {
+                list.add(560);list.add(560);
+            }
+        }
+        list.add(560);list.add(20000);
+        int pattern[]=new int[list.size()];
+        for (int i = 0; i < pattern.length; i++) {
+            pattern[i]=list.get(i);
+        }
+        System.out.println(list.toString());
+        return pattern;
+    }
+
+
     private static String codeFF(String code) {
 //        System.out.println(code);
         Integer a=Integer.parseInt(code,16);

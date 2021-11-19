@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.zwt.necremote.db.DButil;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,8 +51,13 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
         switch (v.getId()){
             case R.id.create:
                 String customerId = et_customer.getText().toString();
+                if (customerId.equals("")){
+                    Toast.makeText(CreateMemoteActivity.this, "请输入内容！", Toast.LENGTH_SHORT).show();
+                    break;
+                }
                 customerId=customerId.replace(" ","");
-                String[] numberArray = customerId.split("\n");
+                String[] numberArrayold = customerId.split("\n");
+                String[] numberArray=Empty(numberArrayold);
                 String a;
                 int length;
                 if (RTKIRjudge){
@@ -83,6 +90,7 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
                 Intent intent=new Intent(CreateMemoteActivity.this,MainActivity2.class);
                 intent.putExtra("IRCODE",IRCODE);
                 intent.putExtra("IRKEY",IRKEY);
+                intent.putExtra("RMNAME",IRname);
                 intent.putExtra("IRKEY",IRKEY);
                 startActivity(intent);
                 finish();
@@ -93,6 +101,9 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
         }
     }
     public  String toRKTCODE(String IRCODEKEY){
+        if (IRCODEKEY.indexOf("=")==-1){
+            return "";
+        }
         String ping[]=IRCODEKEY.split("=");
         String code=ping[1].replace("0x","");
         code=codeFF(code);
@@ -112,5 +123,31 @@ public class CreateMemoteActivity extends AppCompatActivity implements View.OnCl
         Integer a=Integer.parseInt(code,16);
         Integer c=255-a;
         return Integer.toHexString(c)+code;
+    }
+    private  String[] Empty(String[] Arr){
+        int a=0;
+        ArrayList<String> list=new ArrayList<String>();
+        for (int i = 0; i <Arr.length ; i++) {
+            if (judgeEmpty(Arr[i])){
+                list.add(Arr[i]);
+            }
+        }
+        String NewArr[]=new String[list.size()];
+        NewArr=list.toArray(NewArr);
+        return NewArr;
+    }
+
+    private  boolean judgeEmpty(String s){
+        if (s.equals(""))return false;
+        if (s==null) return false;
+
+        char ch[]=s.toCharArray();
+        boolean judgekon=false;
+        for (int i = 0; i < ch.length; i++) {
+            if (i!=' '){
+                judgekon=true;
+            }
+        }
+        return judgekon;
     }
 }

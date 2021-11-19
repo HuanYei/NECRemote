@@ -126,6 +126,7 @@ private ListView listView;
                 intent.putExtra("IRCODE",IRCODE);
                 intent.putExtra("IRKEY",IRKEY);
                 intent.putExtra("IRKEY",IRKEY);
+                intent.putExtra("RMNAME",IRall[position]);
                 intent.putExtra("IRALL",true);
                 startActivity(intent);
                 finish();

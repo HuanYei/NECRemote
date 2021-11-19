@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.zwt.necremote.db.DButil;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-private Button pubic_remote,create_MTK_remote,create_RTK_remote,Storage_remote,custom_remote;
+private Button pubic_remote,create_MTK_remote,create_RTK_remote,Storage_remote,custom_remote,code_remote;
 private DButil dbutil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,8 @@ private DButil dbutil;
         create_RTK_remote=findViewById(R.id.create_RTK_remote);
         Storage_remote=findViewById(R.id.Storage_remote);
         custom_remote=findViewById(R.id.custom_remote);
+        code_remote=findViewById(R.id.code_remote);
+        code_remote.setOnClickListener(this::onClick);
         pubic_remote.setOnClickListener(this::onClick);
         create_MTK_remote.setOnClickListener(this::onClick);
         create_RTK_remote.setOnClickListener(this::onClick);
@@ -51,7 +53,7 @@ private DButil dbutil;
                 break;
             case R.id.Storage_remote:
                 if (dbutil.selectIRALL()==null){
-                    Toast.makeText(HomeActivity.this, "You don't have a stored remote control", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivity.this, "您还没有创建遥控器！", Toast.LENGTH_SHORT).show();
                 }else {
                     Intent intent3 = new Intent(HomeActivity.this, IRallActivity.class);
                     startActivity(intent3);
@@ -60,6 +62,10 @@ private DButil dbutil;
             case R.id.custom_remote:
                 Intent intent8=new Intent(HomeActivity.this,NetworkRemoteActivity.class);
                 startActivity(intent8);
+                break;
+            case R.id.code_remote:
+                Intent intent9=new Intent(HomeActivity.this,SendCodeActivity.class);
+                startActivity(intent9);
                 break;
         }
 

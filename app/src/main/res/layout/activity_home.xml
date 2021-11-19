@@ -20,6 +20,12 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="直接发送码值"
+        android:id="@+id/code_remote"/>
+    <Button
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="创建RTK遥控器"
         android:id="@+id/create_RTK_remote"/>
     <Button
@@ -34,7 +40,10 @@
         android:layout_height="wrap_content"
         android:text="已保存的遥控器"
         android:id="@+id/Storage_remote"/>
+
     <Button
+
+        android:visibility="gone"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

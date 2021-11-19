@@ -13,13 +13,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Set;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnClickListener {
     ConsumerIrManagerApi consumerIrManagerApi;
     private static final String TAG = "MainActivity2";
+    private TextView Name;
     private ListView listView;
     private Button button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,button11,button0,btn_mute;
     private Map<String, String> nemote;
@@ -41,6 +44,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         Intent intent=getIntent();
         String[] IRCODE=intent.getStringArrayExtra("IRCODE");
         String[] IRKEY=intent.getStringArrayExtra("IRKEY");
+        String RMNAME=intent.getStringExtra("RMNAME");
+        Name=findViewById(R.id.rmnameTextView);
+        Name.setText(RMNAME);
         boolean IRAlljudge=intent.getBooleanExtra("IRALL",false);
         if (IRAlljudge){
             nemote = IRallActivity.getNemoteMap();
@@ -53,6 +59,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                vibrator.vibrate(300);
                 consumerIrManagerApi.transmit(38000,IRlevel(IRCODE[position]));
             }
         });
@@ -60,6 +67,7 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
     private void initButton(){
 //        et_customer = (EditText)findViewById(R.id.et_customerId);
+
         button0=findViewById(R.id.key_0);button7=findViewById(R.id.key_7);button1=findViewById(R.id.key_1);button2=findViewById(R.id.key_2);button3=findViewById(R.id.key_3);
         button4=findViewById(R.id.key_4);button5=findViewById(R.id.key_5);button6=findViewById(R.id.key_6);button8=findViewById(R.id.key_8);button9=findViewById(R.id.key_9);
         button11=findViewById(R.id.key_11);button10=findViewById(R.id.key_10);btn_mute=findViewById(R.id.btn_mute);
@@ -86,274 +94,278 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void clickLeft() {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_LEFT"))
+                if (nemote.containsKey("KEY_LEFT")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_LEFT")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_exit);
+                }
 
             }
 
             @Override
             public void clickTop() {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_UP"))
+
+                if (nemote.containsKey("KEY_UP")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_UP")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_exit);
+                }
             }
 
             @Override
             public void clickRight() {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_RIGHT"))
+                if (nemote.containsKey("KEY_RIGHT")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_RIGHT")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_exit);
+                }
             }
 
             @Override
             public void clickBottom() {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_DOWN"))
+                if (nemote.containsKey("KEY_DOWN")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_DOWN")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_exit);
+                }
             }
 
             @Override
             public void clickCenter() {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_ENTER"))
+                if (nemote.containsKey("KEY_ENTER")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_ENTER")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_exit);
+                }
             }
 
             @Override
             public void clicklongLeft() {
-
             }
-
             @Override
             public void clicklongTop() {
-
             }
-
             @Override
             public void clicklongRight() {
-
             }
-
             @Override
             public void clicklongBottom() {
-
             }
-
             @Override
             public void clicklongCenter() {
-
             }
-
             @Override
             public void clicklongbuton() {
-
             }
         });
             btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_BACK"))
+                if (nemote.containsKey("KEY_BACK")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_BACK")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_exit);
+                }
+
+
             }
         });
         btn_epg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_EPG"))
+
+                if (nemote.containsKey("KEY_EPG")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_EPG")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_epg);
+                }
             }
         });
         btn_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
+
                 //nemote KEY_MENU
-                if (nemote.containsKey("KEY_MENU"))
+                if (nemote.containsKey("KEY_MENU")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_MENU")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_menu);
+                }
+
             }
         });
         btn_source.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_INPUT"))
+
+                if (nemote.containsKey("KEY_INPUT")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_INPUT")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_source);
+                }
+
             }
         });
         btn_power.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_POWER"))
+
+                if (nemote.containsKey("KEY_POWER")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_POWER")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_power);
+                }
+
             }
         });
         btn_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_HOME"))
+
+                if (nemote.containsKey("KEY_HOME")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_HOME")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_home);
+                }
+
             }
         });
         btn_chrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_BROWSER"))
+
+                if (nemote.containsKey("KEY_BROWSER")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_BROWSER")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_chrom);
+                }
+
             }
         });
         btn_ch_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_CHANNELUP"))
+
+                if (nemote.containsKey("KEY_CHANNELUP")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_CHANNELUP")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_CH_up);
+                }
+
             }
         });
         btn_ch_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_CHANNELDOWN"))
+
+                if (nemote.containsKey("KEY_CHANNELDOWN")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_CHANNELDOWN")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_CH_dowm);
+                }
+
             }
         });
         btn_vol_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_VOLUMEUP"))
+
+                if (nemote.containsKey("KEY_VOLUMEUP")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_VOLUMEUP")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_VOL_up);
+                }
             }
         });
         btn_vol_down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vibrator.vibrate(300);
-                if (nemote.containsKey("KEY_VOLUMEDOWN"))
+
+                if (nemote.containsKey("KEY_VOLUMEDOWN")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_VOLUMEDOWN")));
-                else
-                    consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_VOL_dowm);
+                }
+
             }
         });
     }
 
     @Override
     public void onClick(View v) {
-        vibrator.vibrate(300);
         switch (v.getId()){
             case R.id.key_0:
-                if (nemote.containsKey("KEY_0"))
+                if (nemote.containsKey("KEY_0")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_0")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("a956df20"));
+                }
                 break;
             case R.id.key_1:
-                if (nemote.containsKey("KEY_1"))
+                if (nemote.containsKey("KEY_1")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_1")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("bd42df20"));
+                }
+
                 break;
             case R.id.key_2:
-                if (nemote.containsKey("KEY_2"))
+                if (nemote.containsKey("KEY_2")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_2")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("bc43df20"));
+                }
+
                 break;
             case R.id.key_3:
-                if (nemote.containsKey("key_3"))
-                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("key_3")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("f00fdf20"));
+                if (nemote.containsKey("KEY_3")){
+                    vibrator.vibrate(300);
+                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_3")));
+                }
                 break;
             case R.id.key_4:
-                if (nemote.containsKey("KEY_4"))
+                if (nemote.containsKey("KEY_4")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_4")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("e11edf20"));
+                }
+
                 break;
             case R.id.key_5:
-                if (nemote.containsKey("KEY_5"))
+                if (nemote.containsKey("KEY_5")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_5")));
-                else
-                consumerIrManagerApi.transmit(38000, IRlevel("e21ddf20"));
+                }
+
                 break;
             case R.id.key_6:
-                if (nemote.containsKey("KEY_6"))
+                if (nemote.containsKey("KEY_6")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_6")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("e31cdf20"));
+                }
+
                 break;
             case R.id.key_7:
-                if (nemote.containsKey("KEY_7"))
+                if (nemote.containsKey("KEY_7")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_7")));
-                else
-                consumerIrManagerApi.transmit(38000, IRlevel("e718df20"));
+                }
+
                 break;
             case R.id.key_8:
-                if (nemote.containsKey("KEY_8"))
+                if (nemote.containsKey("KEY_8")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_8")));
-                else
-                consumerIrManagerApi.transmit(38000, IRlevel("ba45df20"));
+                }
+
                 break;
             case R.id.key_9:
-                if (nemote.containsKey("KEY_9"))
+                if (nemote.containsKey("KEY_9")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_9")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("b34cdf20"));
+                }
+
                 break;
             case R.id.key_11:
-                if (nemote.containsKey("KEY_LAST"))
-                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_LAST")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("f609df20"));
+                if (nemote.containsKey("KEY_INFO")){
+                    vibrator.vibrate(300);
+                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_INFO")));
+                }
+
                 break;
             case R.id.key_10:
-                if (nemote.containsKey("KEY_INPUT"))
-                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_INPUT")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("fe01df20"));
+                if (nemote.containsKey("KEY_RED")){
+                    vibrator.vibrate(300);
+                    consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_RED")));
+                }
+
                 break;
             case R.id.btn_mute:
-                if (nemote.containsKey("KEY_MUTE"))
+                if (nemote.containsKey("KEY_MUTE")){
+                    vibrator.vibrate(300);
                     consumerIrManagerApi.transmit(38000, IRlevel(nemote.get("KEY_MUTE")));
-                else
-                    consumerIrManagerApi.transmit(38000, IRlevel("fe01df20"));
+                }
+
                 break;
         }
     }

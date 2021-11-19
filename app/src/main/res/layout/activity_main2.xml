@@ -17,6 +17,14 @@
         android:layout_height="50dp"
         android:background="@drawable/ic_logo_power"
         />
+        <TextView
+            android:text="遥控器名字"
+            android:id="@+id/rmnameTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
     <Button
         android:layout_marginRight="30dp"
         android:id="@+id/btn_mute"
@@ -30,46 +38,49 @@
         android:layout_below="@id/btn_power"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
-        android:id="@+id/btn_exit"
+        android:id="@+id/btn_epg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exit"/>
+        android:text="EPG"
+        />
 
     <Button
+        android:id="@+id/btn_source"
         android:layout_below="@id/btn_power"
         android:layout_marginTop="10dp"
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
-        android:id="@+id/btn_epg"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EPG"/>
+        android:text="Source"
+        />
 
         <com.zwt.necremote.RoundMenuView
             android:id="@+id/my_roundMenuView"
             android:layout_width="206dp"
             android:layout_height="173dp"
-            android:layout_below="@id/btn_epg"
+            android:layout_below="@id/btn_source"
             android:layout_centerHorizontal="true" />
 
 
+        <Button
+            android:id="@+id/btn_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_roundMenuView"
+            android:layout_marginLeft="20dp"
+            android:text="Menu" />
 
-    <Button
-        android:layout_below="@id/my_roundMenuView"
-        android:layout_marginLeft="20dp"
-        android:id="@+id/btn_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Menu"/>
+        <Button
 
-    <Button
-        android:layout_below="@id/my_roundMenuView"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="50px"
-        android:id="@+id/btn_source"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Source"/>
+            android:id="@+id/btn_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/my_roundMenuView"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50px"
+            android:text="Exit" />
 
     <Button
         android:layout_below="@id/btn_menu"
@@ -88,15 +99,14 @@
         android:text="频道-"
         />
 
-    <Button
-        android:layout_below="@id/btn_source"
-        android:id="@+id/btn_VOL_up"
-        android:layout_marginRight="100px"
-        android:layout_alignParentRight="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="声音+"
-        />
+        <Button
+            android:id="@+id/btn_VOL_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_exit"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="100px"
+            android:text="声音+" />
     <Button
         android:layout_below="@id/btn_VOL_up"
         android:id="@+id/btn_VOL_down"
@@ -206,7 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/key_10"
-                android:text="●"/>
+                android:text="REC"/>
             <Button
                 android:layout_marginLeft="7dp"
                 android:layout_width="wrap_content"
@@ -218,30 +228,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/key_11"
-                android:text="卍"/>
+                android:text="INFO"/>
         </LinearLayout>
 
     </LinearLayout>
-    <ScrollView
-        android:id="@+id/freqs_text_scroll"
 
-        android:layout_width="match_parent"
-        android:layout_height="300px"
-        android:layout_weight="1" >
-        <TextView
-            android:id="@+id/freqs_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="3dp"
-            android:paddingRight="3dp" />
+        <ScrollView
+            android:id="@+id/freqs_text_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="300px"
+            android:layout_weight="1">
 
-    </ScrollView>
+            <TextView
+                android:id="@+id/freqs_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp" />
+
+        </ScrollView>
     </RelativeLayout>
     <ListView
         android:id="@+id/IR_customlistView"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:background="@color/purple_500"
         android:textStyle="bold"
         android:layout_height="match_parent"/>
 </LinearLayout>

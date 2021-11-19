@@ -33,6 +33,8 @@ public class ToptechActivity extends AppCompatActivity implements View.OnTouchLi
         setContentView(R.layout.activity_toptech);
         consumerIrManagerApi = ConsumerIrManagerApi.getInstance();
         consumerIrManagerApi.init(this);
+        //启动线程
+        clicklongthread.start();
     }
 
     @Override
@@ -41,7 +43,7 @@ public class ToptechActivity extends AppCompatActivity implements View.OnTouchLi
         btn_power = findViewById(R.id.btn_power);
         super.onStart();
         mRegionView = (RoundMenuView) findViewById(R.id.my_roundMenuView);
-        clicklongthread.start();
+
         //自定义方向键的绑定
         mRegionView.setListener(new RoundMenuView.RegionViewClickListener() {
 

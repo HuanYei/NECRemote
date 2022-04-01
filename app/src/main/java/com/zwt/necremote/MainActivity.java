@@ -57,35 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 consumerIrManagerApi.transmit(38000, RemoteControlCode.pattern_center);
             }
 
-            @Override
-            public void clicklongLeft() {
-
-            }
-
-            @Override
-            public void clicklongTop() {
-
-            }
-
-            @Override
-            public void clicklongRight() {
-
-            }
-
-            @Override
-            public void clicklongBottom() {
-
-            }
-
-            @Override
-            public void clicklongCenter() {
-
-            }
-
-            @Override
-            public void clicklongbuton() {
-
-            }
 
             @Override
             public void clickBottom() {

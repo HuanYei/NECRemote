@@ -3,6 +3,8 @@ package com.zwt.necremote;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -17,7 +19,7 @@ import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ToptechActivity extends AppCompatActivity implements View.OnTouchListener {
+public class ToptechActivity extends AppCompatActivity implements View.OnClickListener {
     ConsumerIrManagerApi consumerIrManagerApi;
     private RoundMenuView mRegionView;
     private Button btn_power, btn_mute, key_0, key_1, key_2, key_3, key_4, key_5, key_6, key_7, key_8, key_9,
@@ -33,8 +35,8 @@ public class ToptechActivity extends AppCompatActivity implements View.OnTouchLi
         setContentView(R.layout.activity_toptech);
         consumerIrManagerApi = ConsumerIrManagerApi.getInstance();
         consumerIrManagerApi.init(this);
-        //启动线程
-        clicklongthread.start();
+//        //启动线程
+//        clicklongthread.start();
     }
 
     @Override
@@ -49,503 +51,446 @@ public class ToptechActivity extends AppCompatActivity implements View.OnTouchLi
 
             @Override
             public void clickLeft() {
-                isRunning = false;
+                veiwid = 0;
+                keycode = "0c";
+                e按下();
             }
 
             @Override
             public void clickTop() {
-                isRunning = false;
+                veiwid = 0;
+                keycode = "17";
+                e按下();
             }
 
             @Override
             public void clickRight() {
-                isRunning = false;
+                veiwid = 0;
+                keycode = "05";
+                e按下();
             }
 
             @Override
             public void clickBottom() {
-                isRunning = false;
+                veiwid = 0;
+                keycode = "0d";
+                e按下();
             }
 
             @Override
             public void clickCenter() {
-                isRunning = false;
+                veiwid = 0;
+                keycode = "02";
+                e按下();
             }
-
-            @Override
-            public void clicklongLeft() {
-                try {
-                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0c"));
-                    keyCode = "0c";
-                    Thsleep = true;
-                } catch (Exception e) {
-                    Toast.makeText(ToptechActivity.this, "您的手机没有红外功能", Toast.LENGTH_SHORT).show();
-                }
-                Vibrator vibrator = (Vibrator) ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                vibrator.vibrate(300);
-                isRunning = true;
-
-            }
-
-            @Override
-            public void clicklongTop() {
-                try {
-                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("17"));
-                    keyCode = "17";
-                    Thsleep = true;
-                } catch (Exception e) {
-                    Toast.makeText(ToptechActivity.this, "您的手机没有红外功能", Toast.LENGTH_SHORT).show();
-                }
-                Vibrator vibrator = (Vibrator) ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                vibrator.vibrate(300);
-                isRunning = true;
-            }
-
-            @Override
-            public void clicklongRight() {
-                try {
-                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("05"));
-                    keyCode = "05";
-                    Thsleep = true;
-                } catch (Exception e) {
-                    Toast.makeText(ToptechActivity.this, "您的手机没有红外功能", Toast.LENGTH_SHORT).show();
-                }
-                Vibrator vibrator = (Vibrator) ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                vibrator.vibrate(300);
-                isRunning = true;
-            }
-
-            @Override
-            public void clicklongBottom() {
-                try {
-                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0d"));
-                    keyCode = "0d";
-                    Thsleep = true;
-                } catch (Exception e) {
-                    Toast.makeText(ToptechActivity.this, "您的手机没有红外功能", Toast.LENGTH_SHORT).show();
-                }
-                Vibrator vibrator = (Vibrator) ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                vibrator.vibrate(300);
-                isRunning = true;
-            }
-
-            @Override
-            public void clicklongCenter() {
-                try {
-                    consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("02"));
-                    keyCode = "02";
-                    Thsleep = true;
-                    Vibrator vibrator = (Vibrator) ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                    vibrator.vibrate(300);
-                    isRunning = true;
-                } catch (Exception e) {
-                    Toast.makeText(ToptechActivity.this, "您的手机没有红外功能", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void clicklongbuton() {
-                isRunning = false;
-            }
-
         });
     }
 
+    long mLastTime = 0;
+    long mCurTime = 0;
+    int veiwid = 0;
+    String keycode = "";
 
-    //发送长按码值线程。
-    Thread clicklongthread = new Thread(new Runnable() {
+    private Handler handler = new Handler() {
         @Override
-        public void run() {
-            while (true) {
-                if (isRunning) {
-                    try {
-                        if (Thsleep) {
-//                            Log.e("TAG", "run: "+"Thsleepyes");
-                            Thread.sleep(700);
-                            if (isRunning)
-                                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE(keyCode));
-                        } else {
-//                            Log.e("TAG", "run: "+"Thsleepno");
-                        }
-                        if (isRunning) {
-//                            Log.e("TAG", "run: "+"isRunningyes");
-                            Thsleep = false;
-                            Thread.sleep(110);
-                            Vibrator vibrator = (Vibrator) ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
-                            vibrator.vibrate(110);
-                        } else {
-//                            Log.e("TAG", "run: "+"isRunningno");
-                        }
-//                        Log.e("TAG", "-----------------------------------");
-//                        Log.e("TAG", "-----------------------------------");
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 1:
+                    Log.e("SSSS", "handleMessage: 短按事件");
+                    if (veiwid == 0) {
+                        e发送单按码值(keycode);
+                    } else {
+                        e发送单按码值(e获取键码值(veiwid));
                     }
-                    consumerIrManagerApi.transmit(38000, new int[]{9000, 2250, 560, 560});
-                }
+                    break;
+                case 2:
+                    Log.e("SSSS", "handleMessage: 长按事件");
+                    if (veiwid == 0) {
+                        e发送长按码值(keycode);
+                    } else {
+                        e发送长按码值(e获取键码值(veiwid));
+                    }
+                    break;
             }
         }
-    });
-    //用以区分是否要休眠1s
-    boolean Thsleep = true;
-    //用以是否发送长按码
-    boolean isRunning = false;
-    String keyCode = "";
-    //触摸监听
-    int[] viewdisplay = new int[2] ;
-    double[] 初始坐标 = new double[2] ;
-    double[] 移动中坐标 = new double[2] ;
+    };
+
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        isRunning = false;
+    public void onClick(View v) {
+        veiwid = v.getId();
+        e按下();
+    }
+
+    public void e按下() {
+        mLastTime = mCurTime;
+        mCurTime = System.currentTimeMillis();
+        if (mCurTime - mLastTime < 200) {//双击事件
+            mCurTime = 0;
+            mLastTime = 0;
+            handler.removeMessages(1);
+            handler.sendEmptyMessage(2);
+        } else {//单击事件
+            handler.sendEmptyMessageDelayed(1, 210);
+        }
+    }
+
+    int[] viewdisplay = new int[2];
+    double[] 初始坐标 = new double[2];
+    double[] 移动中坐标 = new double[2];
+
+
+    public void e发送长按码值(String keyCode) {
         try {
-            发送按键码值(v.getId());
+            consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE(keyCode));
+            e长按线程(20);
+
         } catch (Exception e) {
-            Toast.makeText(this, "您的手机没有红外功能", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ToptechActivity.this, "您的手机没有红外功能", Toast.LENGTH_SHORT).show();
         }
-        //按下时触发
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            初始坐标[0]=event.getRawX();
-            初始坐标[1]=event.getRawY();
-            keyCode = NECutli.getKeyCode();
-            Thsleep = true;
-            isRunning=true;
-            Vibrator vibrator = (Vibrator) this.getSystemService(this.VIBRATOR_SERVICE);
+
+    }
+
+    public void e长按线程(int j){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = 0; i <j ; i++) {
+                        try {
+                            Thread.sleep(110);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        consumerIrManagerApi.transmit(38000, new int[]{9000, 2250, 560, 560});
+//                        Vibrator vibrator = (Vibrator) ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
+//                        vibrator.vibrate(110);
+                    }
+                }
+            }).start();
+
+    }
+
+    public void e发送单按码值(String keyCode) {
+        try {
+            consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE(keyCode));
+
+            Vibrator vibrator = (Vibrator) ToptechActivity.this.getSystemService(ToptechActivity.this.VIBRATOR_SERVICE);
             vibrator.vibrate(300);
-        } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-            移动中坐标[0]=event.getRawX();
-            移动中坐标[1]=event.getRawY();
-            v.getLocationOnScreen(viewdisplay);
-            Log.e("TAG", "onTouch: "+"初始坐标x:"+初始坐标[0]+"初始坐标y"+初始坐标[1]+"\n  终止坐标x:"+移动中坐标[0]+" 终止坐标y"
-                    +移动中坐标[1]+"\nview坐标x:"+viewdisplay[0]+"  view坐标y"+viewdisplay[1]+"\nw:"+v.getWidth()+"  h"+v.getHeight());
-            int max坐标x=viewdisplay[0]+v.getWidth();
-            int max坐标y=viewdisplay[1]+v.getHeight();
-            int x= (int) 移动中坐标[0];
-            int y= (int)移动中坐标[1];
-//            Log.e("TAG", "onTouch: x:"+max坐标x+" y:"+max坐标y);
-            if (x>viewdisplay[0]&&y>viewdisplay[1]&&x<max坐标x&&y<max坐标y){
-                Log.e("TAG", "onTouch: yes" );
-            }else {
-                isRunning = false;
-            }
-
-
-
-        } else if (event.getAction() == MotionEvent.ACTION_UP) {
-
-            isRunning = false;
+        } catch (Exception e) {
+            Toast.makeText(ToptechActivity.this, "您的手机没有红外功能", Toast.LENGTH_SHORT).show();
         }
-        return false;
+
     }
 
 
-    private void 发送按键码值(int viewid){
+    private String e获取键码值(int viewid) {
         switch (viewid) {
             case R.id.btn_power:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0B"));
-                break;
+                return "0B";
+
             case R.id.btn_mute:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("14"));
-                break;
+                return "14";
+
             case R.id.key_1:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("42"));
-                break;
+                return "42";
+
             case R.id.key_2:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("43"));
-                break;
+                return "43";
+
             case R.id.key_3:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0F"));
-                break;
+                return "0F";
+
             case R.id.key_4:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("1E"));
-                break;
+                return "1E";
+
             case R.id.key_5:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("1D"));
-                break;
+                return "1D";
+
             case R.id.key_6:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("1C"));
-                break;
+                return "1C";
+
             case R.id.key_7:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("18"));
-                break;
+                return "18";
+
             case R.id.key_8:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("45"));
-                break;
+                return "45";
+
             case R.id.key_9:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("4C"));
-                break;
+                return "4C";
+
             case R.id.key_0:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("56"));
-                break;
+                return "56";
+
             case R.id.key_缩放:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("51"));
-                break;
+                return "51";
+
             case R.id.key_LIST:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("09"));
-                break;
+                return "09";
+
             case R.id.btn_source:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("01"));
-                break;
+                return "01";
+
             case R.id.btn_信息:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("50"));
-                break;
+                return "50";
+
             case R.id.btn_menu:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("4e"));
-                break;
+                return "4e";
+
             case R.id.btn_exit:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("1b"));
-                break;
+                return "1b";
+
             case R.id.btn_CH_up:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("55"));
-                break;
+                return "55";
+
             case R.id.btn_CH_down:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("5a"));
-                break;
+                return "5a";
+
             case R.id.btn_VOL_up:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("0a"));
-                break;
+                return "0a";
+
             case R.id.btn_VOL_down:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("40"));
-                break;
+                return "40";
+
             case R.id.btn_home:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("06"));
-                break;
+                return "06";
+
             case R.id.btn_喜爱:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("10"));
-                break;
+                return "10";
+
             case R.id.key_老化:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("3c"));
-                break;
+                return "3c";
+
             case R.id.key_复位:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("3b"));
-                break;
+                return "3b";
+
             case R.id.key_频点:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("38"));
-                break;
+                return "38";
+
             case R.id.key_版本:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("3a"));
-                break;
+                return "3a";
+
             case R.id.key_CC:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("44"));
-                break;
+                return "44";
+
             case R.id.key_高清:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("48"));
-                break;
+                return "48";
+
             case R.id.key_MAC:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("2c"));
-                break;
+                return "2c";
+
             case R.id.key_CIKEY:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("2d"));
-                break;
+                return "2d";
+
             case R.id.key_按键:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("2e"));
-                break;
+                return "2e";
+
             case R.id.key_测试:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("3d"));
-                break;
+                return "3d";
+
             case R.id.key_CIINF:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("e8"));
-                break;
+                return "e8";
+
             case R.id.key_HDK:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("e6"));
-                break;
+                return "e6";
+
             case R.id.key_LNB:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("e7"));
-                break;
+                return "e7";
+
             case R.id.key_网线:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("ec"));
-                break;
+                return "ec";
+
             case R.id.key_WIFI:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("ed"));
-                break;
+                return "ed";
+
             case R.id.key_屏参:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("3e"));
-                break;
+                return "3e";
+
             case R.id.key_MTS:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("11"));
-                break;
+                return "11";
+
             case R.id.key_省电:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("10"));
-                break;
+                return "10";
+
             case R.id.key_图像:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("4d"));
-                break;
+                return "4d";
+
             case R.id.key_声音:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("07"));
-                break;
+                return "07";
+
             case R.id.key_播放暂停:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("16"));
-                break;
+                return "16";
+
             case R.id.key_上一首:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("00"));
-                break;
+                return "00";
+
             case R.id.key_下一首:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("08"));
-                break;
+                return "08";
+
             case R.id.key_切换:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("39"));
-                break;
+                return "39";
+
             case R.id.key_停止:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("12"));
-                break;
+                return "12";
+
             case R.id.key_快退:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("1a"));
-                break;
+                return "1a";
+
             case R.id.key_快进:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("5f"));
-                break;
+                return "5f";
+
             case R.id.key_EPG:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("47"));
-                break;
+                return "47";
+
             case R.id.key_刻录:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("57"));
-                break;
+                return "57";
+
             case R.id.key_刻录列表:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("13"));
-                break;
+                return "13";
+
             case R.id.key_时移:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("48"));
-                break;
+                return "48";
+
             case R.id.key_浏览器:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("5b"));
-                break;
+                return "5b";
+
             case R.id.key_红色:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("46"));
-                break;
+                return "46";
+
             case R.id.key_绿色:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("4a"));
-                break;
+                return "4a";
+
             case R.id.key_黄色:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("52"));
-                break;
+                return "52";
+
             case R.id.key_蓝色:
-                consumerIrManagerApi.transmit(38000, NECutli.toRKTCODE("5e"));
-                break;
+                return "5e";
+
         }
+        return "";
     }
+
     //控件绑定ID
     private void 控件绑定ID() {
         btn_power = findViewById(R.id.btn_power);
-        btn_power.setOnTouchListener(this);
+        btn_power.setOnClickListener(this);
         btn_mute = findViewById(R.id.btn_mute);
-        btn_mute.setOnTouchListener(this);
+        btn_mute.setOnClickListener(this);
         key_0 = findViewById(R.id.key_0);
-        key_0.setOnTouchListener(this);
+        key_0.setOnClickListener(this);
         key_1 = findViewById(R.id.key_1);
-        key_1.setOnTouchListener(this);
+        key_1.setOnClickListener(this);
         key_2 = findViewById(R.id.key_2);
-        key_2.setOnTouchListener(this);
+        key_2.setOnClickListener(this);
         key_3 = findViewById(R.id.key_3);
-        key_3.setOnTouchListener(this);
+        key_3.setOnClickListener(this);
         key_4 = findViewById(R.id.key_4);
-        key_4.setOnTouchListener(this);
+        key_4.setOnClickListener(this);
         key_5 = findViewById(R.id.key_5);
-        key_5.setOnTouchListener(this);
+        key_5.setOnClickListener(this);
         key_6 = findViewById(R.id.key_6);
-        key_6.setOnTouchListener(this);
+        key_6.setOnClickListener(this);
         key_7 = findViewById(R.id.key_7);
-        key_7.setOnTouchListener(this);
+        key_7.setOnClickListener(this);
         key_8 = findViewById(R.id.key_8);
-        key_8.setOnTouchListener(this);
+        key_8.setOnClickListener(this);
         key_9 = findViewById(R.id.key_9);
-        key_9.setOnTouchListener(this);
+        key_9.setOnClickListener(this);
         key_缩放 = findViewById(R.id.key_缩放);
-        key_缩放.setOnTouchListener(this);
+        key_缩放.setOnClickListener(this);
         key_LIST = findViewById(R.id.key_LIST);
-        key_LIST.setOnTouchListener(this);
+        key_LIST.setOnClickListener(this);
         btn_source = findViewById(R.id.btn_source);
-        btn_source.setOnTouchListener(this);
+        btn_source.setOnClickListener(this);
         btn_信息 = findViewById(R.id.btn_信息);
-        btn_信息.setOnTouchListener(this);
+        btn_信息.setOnClickListener(this);
         btn_menu = findViewById(R.id.btn_menu);
-        btn_menu.setOnTouchListener(this);
+        btn_menu.setOnClickListener(this);
         btn_exit = findViewById(R.id.btn_exit);
-        btn_exit.setOnTouchListener(this);
+        btn_exit.setOnClickListener(this);
         btn_CH_up = findViewById(R.id.btn_CH_up);
-        btn_CH_up.setOnTouchListener(this);
+        btn_CH_up.setOnClickListener(this);
         btn_CH_down = findViewById(R.id.btn_CH_down);
-        btn_CH_down.setOnTouchListener(this);
+        btn_CH_down.setOnClickListener(this);
         btn_VOL_up = findViewById(R.id.btn_VOL_up);
-        btn_VOL_up.setOnTouchListener(this);
+        btn_VOL_up.setOnClickListener(this);
         btn_VOL_down = findViewById(R.id.btn_VOL_down);
-        btn_VOL_down.setOnTouchListener(this);
+        btn_VOL_down.setOnClickListener(this);
         btn_home = findViewById(R.id.btn_home);
-        btn_home.setOnTouchListener(this);
+        btn_home.setOnClickListener(this);
         btn_喜爱 = findViewById(R.id.btn_喜爱);
-        btn_喜爱.setOnTouchListener(this);
+        btn_喜爱.setOnClickListener(this);
         key_老化 = findViewById(R.id.key_老化);
-        key_老化.setOnTouchListener(this);
+        key_老化.setOnClickListener(this);
         key_复位 = findViewById(R.id.key_复位);
-        key_复位.setOnTouchListener(this);
+        key_复位.setOnClickListener(this);
         key_频点 = findViewById(R.id.key_频点);
-        key_频点.setOnTouchListener(this);
+        key_频点.setOnClickListener(this);
         key_版本 = findViewById(R.id.key_版本);
-        key_版本.setOnTouchListener(this);
+        key_版本.setOnClickListener(this);
         key_CC = findViewById(R.id.key_CC);
-        key_CC.setOnTouchListener(this);
+        key_CC.setOnClickListener(this);
         key_高清 = findViewById(R.id.key_高清);
-        key_高清.setOnTouchListener(this);
+        key_高清.setOnClickListener(this);
         key_MAC = findViewById(R.id.key_MAC);
-        key_MAC.setOnTouchListener(this);
+        key_MAC.setOnClickListener(this);
         key_CIKEY = findViewById(R.id.key_CIKEY);
-        key_CIKEY.setOnTouchListener(this);
+        key_CIKEY.setOnClickListener(this);
         key_按键 = findViewById(R.id.key_按键);
-        key_按键.setOnTouchListener(this);
+        key_按键.setOnClickListener(this);
         key_测试 = findViewById(R.id.key_测试);
-        key_测试.setOnTouchListener(this);
+        key_测试.setOnClickListener(this);
         key_CIINF = findViewById(R.id.key_CIINF);
-        key_CIINF.setOnTouchListener(this);
+        key_CIINF.setOnClickListener(this);
         key_HDK = findViewById(R.id.key_HDK);
-        key_HDK.setOnTouchListener(this);
+        key_HDK.setOnClickListener(this);
         key_LNB = findViewById(R.id.key_LNB);
-        key_LNB.setOnTouchListener(this);
+        key_LNB.setOnClickListener(this);
         key_网线 = findViewById(R.id.key_网线);
-        key_网线.setOnTouchListener(this);
+        key_网线.setOnClickListener(this);
         key_WIFI = findViewById(R.id.key_WIFI);
-        key_WIFI.setOnTouchListener(this);
+        key_WIFI.setOnClickListener(this);
         key_屏参 = findViewById(R.id.key_屏参);
-        key_屏参.setOnTouchListener(this);
+        key_屏参.setOnClickListener(this);
         key_MTS = findViewById(R.id.key_MTS);
-        key_MTS.setOnTouchListener(this);
+        key_MTS.setOnClickListener(this);
         key_省电 = findViewById(R.id.key_省电);
-        key_省电.setOnTouchListener(this);
+        key_省电.setOnClickListener(this);
         key_图像 = findViewById(R.id.key_图像);
-        key_图像.setOnTouchListener(this);
+        key_图像.setOnClickListener(this);
         key_声音 = findViewById(R.id.key_声音);
-        key_声音.setOnTouchListener(this);
+        key_声音.setOnClickListener(this);
         key_播放暂停 = findViewById(R.id.key_播放暂停);
-        key_播放暂停.setOnTouchListener(this);
+        key_播放暂停.setOnClickListener(this);
         key_上一首 = findViewById(R.id.key_上一首);
-        key_上一首.setOnTouchListener(this);
+        key_上一首.setOnClickListener(this);
         key_下一首 = findViewById(R.id.key_下一首);
-        key_下一首.setOnTouchListener(this);
+        key_下一首.setOnClickListener(this);
         key_切换 = findViewById(R.id.key_切换);
-        key_切换.setOnTouchListener(this);
+        key_切换.setOnClickListener(this);
         key_停止 = findViewById(R.id.key_停止);
-        key_停止.setOnTouchListener(this);
+        key_停止.setOnClickListener(this);
         key_快退 = findViewById(R.id.key_快退);
-        key_快退.setOnTouchListener(this);
+        key_快退.setOnClickListener(this);
         key_快进 = findViewById(R.id.key_快进);
-        key_快进.setOnTouchListener(this);
+        key_快进.setOnClickListener(this);
         key_EPG = findViewById(R.id.key_EPG);
-        key_EPG.setOnTouchListener(this);
+        key_EPG.setOnClickListener(this);
         key_刻录 = findViewById(R.id.key_刻录);
-        key_刻录.setOnTouchListener(this);
+        key_刻录.setOnClickListener(this);
         key_刻录列表 = findViewById(R.id.key_刻录列表);
-        key_刻录列表.setOnTouchListener(this);
+        key_刻录列表.setOnClickListener(this);
         key_时移 = findViewById(R.id.key_时移);
-        key_时移.setOnTouchListener(this);
+        key_时移.setOnClickListener(this);
         key_浏览器 = findViewById(R.id.key_浏览器);
-        key_浏览器.setOnTouchListener(this);
+        key_浏览器.setOnClickListener(this);
         key_红色 = findViewById(R.id.key_红色);
-        key_红色.setOnTouchListener(this);
+        key_红色.setOnClickListener(this);
         key_绿色 = findViewById(R.id.key_绿色);
-        key_绿色.setOnTouchListener(this);
+        key_绿色.setOnClickListener(this);
         key_黄色 = findViewById(R.id.key_黄色);
-        key_黄色.setOnTouchListener(this);
+        key_黄色.setOnClickListener(this);
         key_蓝色 = findViewById(R.id.key_蓝色);
-        key_蓝色.setOnTouchListener(this);
+        key_蓝色.setOnClickListener(this);
     }
 
 

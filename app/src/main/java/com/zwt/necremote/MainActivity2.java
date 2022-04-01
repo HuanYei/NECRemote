@@ -134,24 +134,6 @@ public class MainActivity2 extends AppCompatActivity implements View.OnClickList
                 }
             }
 
-            @Override
-            public void clicklongLeft() {
-            }
-            @Override
-            public void clicklongTop() {
-            }
-            @Override
-            public void clicklongRight() {
-            }
-            @Override
-            public void clicklongBottom() {
-            }
-            @Override
-            public void clicklongCenter() {
-            }
-            @Override
-            public void clicklongbuton() {
-            }
         });
             btn_exit.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,8 +8,36 @@
     tools:context=".SendCodeActivity">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="400dp"/>
+        android:layout_height="100dp"/>
+    <RadioGroup
+        android:layout_gravity="center"
+        android:id="@+id/radiogroup1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/NEC"
+            android:checked="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="NEC协议" />
+
+        <RadioButton
+            android:id="@+id/KK"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="康佳协议" />
+
+        <RadioButton
+            android:id="@+id/SS"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="三星协议" />
+    </RadioGroup>
+
     <EditText
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:hint="客户码：公版遥控器POWER键例：df"
         android:id="@+id/Customer_code"

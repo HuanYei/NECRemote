@@ -1,5 +1,8 @@
 package com.zwt.necremote.utli;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class  NECutli {
     static String keyCode;
 
@@ -43,6 +46,16 @@ public class  NECutli {
         return resoultBinaryString.toString();
     }
 
+    public static int[] IRleveType(String IRCode,String type){
+        if (type.equals("SS")){
+            return  IRlevel_SAM(IRCode);
+        }else if (type.equals("KK")){
+            return  IRlevel_SAM(IRCode);
+        }else {
+            return  IRlevel(IRCode);
+        }
+    }
+
     public static  int[] toRKTCODE(String IRCODEKEY){
         keyCode = IRCODEKEY;
         String code=IRCODEKEY;
@@ -57,7 +70,7 @@ public class  NECutli {
         return IRlevel(IRCODEKEY);
     }
 
-    public static  int[] toPublicRTKCODE(String IRCODEKEY,String USERCODE){
+    public static  int[] toPublicRTKCODE(String IRCODEKEY,String USERCODE,String type){
         keyCode = IRCODEKEY;
         String code=IRCODEKEY;
         code=codeFF(code);
@@ -66,7 +79,7 @@ public class  NECutli {
         String b=Headcode.substring(2,4);
         code=code+b+a;
         IRCODEKEY=code;
-        return IRlevel(IRCODEKEY);
+        return IRleveType(IRCODEKEY,type);
     }
 
     // 根据十六进制遥控码值转换成遥控发射数组
